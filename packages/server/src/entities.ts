@@ -1,1 +1,3 @@
-export const entities = []
+import { Listing, User } from "./entity";
+
+export const entities = [User, Listing];

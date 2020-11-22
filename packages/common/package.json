@@ -6,5 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf ./dist && tsc"
+  },
+  "resolutions": {
+    "graphql": "^15.4.0"
   }
 }

@@ -9,5 +9,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.2.7"
+  },
+  "resolutions": {
+    "graphql": "^15.4.0"
   }
 }

@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev src/index.ts",
+    "start": "ts-node-dev src/main",
     "db:setup": "ts-node ./src/test-utils/setup.ts",
-    "test": "npm run db:setup && jest"
+    "test": "npm run db:setup && jest",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "author": "",
   "license": "ISC",
@@ -30,7 +31,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "faker": "^4.1.0",
-    "graphql": "^15.3.0",
+    "graphql": "^15.4.0",
     "graphql-query-complexity": "^0.6.0",
     "graphql-type-json": "^0.3.2",
     "ioredis": "^4.17.3",
@@ -49,6 +50,12 @@
     "uuid": "^8.2.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "1.19.2",
+    "@graphql-codegen/typescript": "1.17.11",
+    "@graphql-codegen/typescript-operations": "1.17.10",
     "@types/jsonwebtoken": "^8.5.0"
+  },
+  "resolutions": {
+    "graphql": "^15.4.0"
   }
 }

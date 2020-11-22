@@ -11,7 +11,7 @@ import { Context } from "../../types/Context";
 import { DI } from "../../main";
 import { getId } from "../../helpers/getId";
 import { redis } from "../../redis";
-import { confirmUserPrefix, forgotPasswordPrefix } from "src/constants";
+import { confirmUserPrefix, forgotPasswordPrefix } from "../../constants";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { v4 } from "uuid";
