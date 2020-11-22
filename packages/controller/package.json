@@ -1,0 +1,13 @@
+{
+  "name": "@airbnb/controller",
+  "version": "1.0.1",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf ./dist && tsc"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.2.7"
+  }
+}

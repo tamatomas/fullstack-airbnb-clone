@@ -1,4 +1,10 @@
 {
-    "name": "@monorepo/common",
-    "version": "1.0.0"
+  "name": "@airbnb/common",
+  "version": "1.0.1",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf ./dist && tsc"
+  }
 }
