@@ -6,8 +6,5 @@
   "scripts": {
     "start-expo": "cd packages/app && yarn start",
     "build:common": "cd packages/common && yarn build"
-  },
-  "resolutions": {
-    "graphql": "^15.4.0"
   }
 }

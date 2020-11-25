@@ -6,5 +6,12 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: ["gatsby-plugin-typescript"],
+  plugins: ["gatsby-plugin-typescript",
+  {
+    resolve: 'gatsby-plugin-apollo',
+    options: {
+      uri: 'https://example.com/graphql',
+      credentials: "include"
+    }
+  }],
 }

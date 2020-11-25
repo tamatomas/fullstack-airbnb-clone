@@ -85,11 +85,11 @@ export class Listing {
 }
 
 registerEnumType(KindOfPlace, {
-  name: "KindOfPlace", // this one is mandatory
+  name: "KindOfPlaceEnum", // this one is mandatory
 });
 
 registerEnumType(PropertyType, {
-  name: "PropertyType", // this one is mandatory
+  name: "PropertyTypeEnum", // this one is mandatory
 });
 
 export { KindOfPlace, PropertyType } from "@airbnb/common";

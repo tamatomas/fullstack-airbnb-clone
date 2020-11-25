@@ -9,5 +9,11 @@
   },
   "resolutions": {
     "graphql": "^15.4.0"
+  },
+  "dependencies": {
+    "yup": "^0.31.0"
+  },
+  "devDependencies": {
+    "@types/yup": "^0.29.9"
   }
 }

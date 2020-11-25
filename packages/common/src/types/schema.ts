@@ -39,8 +39,8 @@ export type Listing = {
   description: Scalars['String'];
   price: Scalars['Float'];
   currency: Scalars['String'];
-  kind: KindOfPlace;
-  proptype: PropertyType;
+  kind: KindOfPlaceEnum;
+  proptype: PropertyTypeEnum;
   nguests: Scalars['Float'];
   dedicated: Scalars['Boolean'];
   beds: Scalars['Float'];
@@ -55,13 +55,13 @@ export type Listing = {
   owner: User;
 };
 
-export enum KindOfPlace {
+export enum KindOfPlaceEnum {
   EntirePlace = 'EntirePlace',
   PrivateRoom = 'PrivateRoom',
   SharedRoom = 'SharedRoom'
 }
 
-export enum PropertyType {
+export enum PropertyTypeEnum {
   Apartment = 'Apartment',
   House = 'House',
   SecondaryUnit = 'SecondaryUnit',
@@ -143,8 +143,8 @@ export type ListingInput = {
   description?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Float']>;
   currency?: Maybe<Scalars['String']>;
-  kind: KindOfPlace;
-  proptype?: Maybe<PropertyType>;
+  kind: KindOfPlaceEnum;
+  proptype?: Maybe<PropertyTypeEnum>;
   nguests: Scalars['Float'];
   dedicated?: Maybe<Scalars['Boolean']>;
   beds?: Maybe<Scalars['Float']>;
