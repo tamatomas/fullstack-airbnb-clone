@@ -1,6 +1,8 @@
 import create from "zustand"
 import { persist } from "zustand/middleware"
 
+const storage = typeof window !== "undefined" ? localStorage : undefined
+
 export type State = {
   isAuth: boolean
   setAuth: (isAuth: boolean) => void
@@ -17,6 +19,7 @@ export const useStore = create<State>(
     }),
     {
       name: "globals-storage", // unique name
+      storage,
     }
   )
 )
