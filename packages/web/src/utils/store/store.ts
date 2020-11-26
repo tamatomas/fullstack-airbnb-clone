@@ -17,7 +17,6 @@ export const useStore = create<State>(
     }),
     {
       name: "globals-storage", // unique name
-      storage: sessionStorage, // (optional) default is 'localStorage'
     }
   )
 )
