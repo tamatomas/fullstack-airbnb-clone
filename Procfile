@@ -1,0 +1,1 @@
+web: cd packages/server && ts-node src/main

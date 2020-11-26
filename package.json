@@ -4,7 +4,9 @@
     "packages/*"
   ],
   "scripts": {
-    "start-expo": "cd packages/app && yarn start",
-    "build:common": "cd packages/common && yarn build"
+    "start:web": "cd packages/web && yarn start",
+    "start:expo": "cd packages/app && yarn start",
+    "build:common": "cd packages/common && yarn build",
+    "build:controller": "cd packages/controller && yarn build"
   }
 }
