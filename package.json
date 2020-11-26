@@ -4,7 +4,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start:web": "cd packages/web && yarn start",
+    "start:web": "cd packages/web && gatsby develop",
     "start:expo": "cd packages/app && yarn start",
     "build:common": "cd packages/common && yarn build",
     "build:controller": "cd packages/controller && yarn build"
