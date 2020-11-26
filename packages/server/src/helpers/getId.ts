@@ -12,5 +12,5 @@ export const getId = (ctx: Context) => {
     id = (decoded as { id: string }).id;
   }
 
-  return id;
+  return parseInt(id + "");
 };

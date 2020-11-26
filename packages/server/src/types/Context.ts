@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 declare module "express-session" {
   interface SessionData {
-    userId: number;
+    userId: string | number;
   }
 }
 
