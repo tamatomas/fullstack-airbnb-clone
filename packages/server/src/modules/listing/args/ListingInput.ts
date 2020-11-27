@@ -60,8 +60,8 @@ export class ListingInput implements Partial<Listing> {
   @Field({ nullable: true })
   zip?: string;
 
-  @Field(() => GraphQLJSONObject)
-  location!: Location;
+  @Field(() => GraphQLJSONObject, { nullable: true })
+  location?: Location;
 
   @Field(() => Int)
   ownerid: number;

@@ -11,8 +11,8 @@ import { GraphQLJSONObject } from "graphql-type-json";
 import { KindOfPlace, PropertyType, Location } from "@airbnb/common";
 import { User } from "./user.entity";
 
-@Entity()
 @ObjectType()
+@Entity()
 export class Listing {
   @Field(() => ID)
   @PrimaryKey()
@@ -83,8 +83,8 @@ export class Listing {
   zip?: string;
 
   @Field(() => GraphQLJSONObject)
-  @Property({ type: JsonType })
-  location!: Location;
+  @Property({ type: JsonType, nullable: true })
+  location?: Location;
 
   @Field(() => User)
   @ManyToOne()
