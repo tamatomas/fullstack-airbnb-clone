@@ -19,7 +19,7 @@ const entity_1 = require("../../entity");
 const ListingInput_1 = require("./args/ListingInput");
 const graphql_type_json_1 = require("graphql-type-json");
 let ListingResolver = class ListingResolver {
-    async search(location, city, guests) {
+    async search(city, guests, location) {
         const list = await main_1.DI.em.find(entity_1.Listing, {
             city,
             location,
@@ -84,11 +84,11 @@ let ListingResolver = class ListingResolver {
 };
 __decorate([
     type_graphql_1.Query(() => [entity_1.Listing]),
-    __param(0, type_graphql_1.Arg("location", () => graphql_type_json_1.GraphQLJSONObject)),
-    __param(1, type_graphql_1.Arg("city")),
-    __param(2, type_graphql_1.Arg("guests")),
+    __param(0, type_graphql_1.Arg("city")),
+    __param(1, type_graphql_1.Arg("guests")),
+    __param(2, type_graphql_1.Arg("location", () => graphql_type_json_1.GraphQLJSONObject)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String, Number]),
+    __metadata("design:paramtypes", [String, Number, Object]),
     __metadata("design:returntype", Promise)
 ], ListingResolver.prototype, "search", null);
 __decorate([

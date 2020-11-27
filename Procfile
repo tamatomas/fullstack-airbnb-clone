@@ -1,1 +1,1 @@
-web: yarn workspace @airbnb/server ts-node src/main
+web: yarn workspace @airbnb/server node dist/main
