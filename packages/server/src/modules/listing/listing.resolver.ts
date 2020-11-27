@@ -3,8 +3,6 @@ import { DI } from "../../main";
 import { Listing, User } from "../../entity";
 import { ListingInput } from "./args/ListingInput";
 import { Location } from "@airbnb/common";
-import { GraphQLJSONObject } from "graphql-type-json";
-export { Location };
 
 @Resolver()
 export class ListingResolver {
@@ -12,8 +10,10 @@ export class ListingResolver {
   async search(
     @Arg("city") city: string,
     @Arg("guests") guests: number,
-    @Arg("location", () => GraphQLJSONObject) location: Location
+    @Arg("lat") lat: number,
+    @Arg("lon") lon: number
   ): Promise<Listing[]> {
+    const location: Location = { lat, lon };
     const list = await DI.em.find(Listing, {
       city,
       location,
