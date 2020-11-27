@@ -1,6 +1,5 @@
-import Redis from 'ioredis';
+import Redis from "ioredis";
 
-export const redis =
-  process.env.REDIS_URL === 'production'
-    ? new Redis(process.env.REDIS_URL)
-    : new Redis();
+export const redis = process.env.REDIS_URL
+  ? new Redis(process.env.REDIS_URL)
+  : new Redis();
