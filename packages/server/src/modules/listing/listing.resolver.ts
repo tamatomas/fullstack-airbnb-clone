@@ -2,6 +2,8 @@ import { Arg, Int, Mutation, Query, Resolver } from "type-graphql";
 import { DI } from "../../main";
 import { Listing, User } from "../../entity";
 import { ListingInput } from "./args/ListingInput";
+import { Location } from "@airbnb/common";
+import { GraphQLJSONObject } from "graphql-type-json";
 
 @Resolver()
 export class ListingResolver {
@@ -9,13 +11,11 @@ export class ListingResolver {
   async search(
     @Arg("city") city: string,
     @Arg("guests") guests: number,
-    @Arg("lat") lat: number,
-    @Arg("lon") lon: number
+    @Arg("location", () => GraphQLJSONObject) location: Location
   ): Promise<Listing[]> {
     const list = await DI.em.find(Listing, {
       city,
-      lat,
-      lon,
+      location,
       nguests: guests,
     });
 
@@ -33,7 +33,7 @@ export class ListingResolver {
 
   @Mutation(() => Listing)
   async createListing(
-    @Arg("data") { kind, nguests, ownerid, lat, lon }: ListingInput
+    @Arg("data") { kind, location, nguests, ownerid }: ListingInput
   ): Promise<Listing> {
     const list = new Listing();
     const user = await DI.em.findOne(User, { id: ownerid });
@@ -42,8 +42,7 @@ export class ListingResolver {
 
     list.owner = user;
     list.kind = kind;
-    list.lat = lat;
-    list.lon = lon;
+    list.location = location;
     list.nguests = nguests;
     await DI.em.persist(list).flush();
 
@@ -69,8 +68,7 @@ export class ListingResolver {
     list.dedicated = updateListingData.dedicated;
     list.description = updateListingData.description;
     list.kind = updateListingData.kind;
-    list.lat = updateListingData.lat;
-    list.lon = updateListingData.lon;
+    list.location = updateListingData.location;
     list.nguests = updateListingData.nguests;
     list.price = updateListingData.price;
     list.proptype = updateListingData.proptype;

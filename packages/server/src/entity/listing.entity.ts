@@ -1,6 +1,14 @@
-import { Entity, Enum, ManyToOne, PrimaryKey, Property } from "@mikro-orm/core";
+import {
+  Entity,
+  Enum,
+  JsonType,
+  ManyToOne,
+  PrimaryKey,
+  Property,
+} from "@mikro-orm/core";
 import { Field, ID, ObjectType, registerEnumType } from "type-graphql";
-import { KindOfPlace, PropertyType } from "@airbnb/common";
+import { GraphQLJSONObject } from "graphql-type-json";
+import { KindOfPlace, PropertyType, Location } from "@airbnb/common";
 import { User } from "./user.entity";
 
 @Entity()
@@ -74,11 +82,9 @@ export class Listing {
   @Property()
   zip?: string;
 
-  @Field()
-  lat: number;
-
-  @Field()
-  lon: number;
+  @Field(() => GraphQLJSONObject)
+  @Property({ type: JsonType })
+  location!: Location;
 
   @Field(() => User)
   @ManyToOne()
