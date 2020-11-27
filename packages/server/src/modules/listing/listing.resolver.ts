@@ -1,6 +1,6 @@
 import { Arg, Int, Mutation, Query, Resolver } from "type-graphql";
 import { DI } from "../../main";
-import { Listing, Location, User } from "../../entity";
+import { Listing, Coords, User } from "../../entity";
 import { ListingInput } from "./args/ListingInput";
 import { GraphQLJSONObject } from "graphql-type-json";
 
@@ -10,7 +10,7 @@ export class ListingResolver {
   async search(
     @Arg("city") city: string,
     @Arg("guests") guests: number,
-    @Arg("location", () => GraphQLJSONObject) location: Location
+    @Arg("location", () => GraphQLJSONObject) location: Coords
   ): Promise<Listing[]> {
     const list = await DI.em.find(Listing, {
       city,

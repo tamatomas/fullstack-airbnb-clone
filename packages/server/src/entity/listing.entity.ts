@@ -11,7 +11,7 @@ import { GraphQLJSONObject } from "graphql-type-json";
 import { KindOfPlace, PropertyType } from "@airbnb/common";
 import { User } from "./user.entity";
 
-export type Location = {
+export type Coords = {
   lat: number;
   lon: number;
 };
@@ -89,7 +89,7 @@ export class Listing {
 
   @Field(() => GraphQLJSONObject)
   @Property({ type: JsonType, nullable: true })
-  location?: Location;
+  location?: Coords;
 
   @Field(() => User)
   @ManyToOne()

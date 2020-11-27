@@ -4,7 +4,7 @@ import {
   KindOfPlace,
   Listing,
   PropertyType,
-  Location,
+  Coords,
 } from "../../../entity/listing.entity";
 
 @InputType()
@@ -61,7 +61,7 @@ export class ListingInput implements Partial<Listing> {
   zip?: string;
 
   @Field(() => GraphQLJSONObject, { nullable: true })
-  location?: Location;
+  location?: Coords;
 
   @Field(() => Int)
   ownerid: number;
