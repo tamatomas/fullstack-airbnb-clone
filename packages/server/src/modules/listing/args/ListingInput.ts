@@ -1,5 +1,3 @@
-import { Location } from "@airbnb/common";
-import { GraphQLJSONObject } from "graphql-type-json";
 import { Field, ID, InputType, Int } from "type-graphql";
 import {
   KindOfPlace,
@@ -60,8 +58,11 @@ export class ListingInput implements Partial<Listing> {
   @Field({ nullable: true })
   zip?: string;
 
-  @Field(() => GraphQLJSONObject)
-  location!: Location;
+  @Field()
+  lat: number;
+
+  @Field()
+  lon: number;
 
   @Field(() => Int)
   ownerid: number;

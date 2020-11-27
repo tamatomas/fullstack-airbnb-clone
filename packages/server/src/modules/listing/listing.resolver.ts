@@ -34,8 +34,9 @@ export class ListingResolver {
 
   @Mutation(() => Listing)
   async createListing(
-    @Arg("data") { kind, location, nguests, ownerid }: ListingInput
+    @Arg("data") { kind, nguests, ownerid, lat, lon }: ListingInput
   ): Promise<Listing> {
+    const location: Location = { lat, lon };
     const list = new Listing();
     const user = await DI.em.findOne(User, { id: ownerid });
 
@@ -61,6 +62,10 @@ export class ListingResolver {
   ): Promise<Listing> {
     const list = await DI.em.findOne(Listing, { id: updateListingData.id });
     if (!list) throw new Error("Listing not founded");
+    const location: Location = {
+      lat: updateListingData.lat,
+      lon: updateListingData.lon,
+    };
     list.bedrooms = updateListingData.bedrooms;
     list.amenities = updateListingData.amenities;
     list.city = updateListingData.city;
@@ -69,7 +74,7 @@ export class ListingResolver {
     list.dedicated = updateListingData.dedicated;
     list.description = updateListingData.description;
     list.kind = updateListingData.kind;
-    list.location = updateListingData.location;
+    list.location = location;
     list.nguests = updateListingData.nguests;
     list.price = updateListingData.price;
     list.proptype = updateListingData.proptype;
