@@ -8,9 +8,9 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 exports.getId = (ctx) => {
     let id = ctx.req.session.userId;
     if (!id && ctx.req.headers.authorization) {
-        var decoded = jsonwebtoken_1.default.verify(ctx.req.headers.authorization.toString(), 'some secret');
+        var decoded = jsonwebtoken_1.default.verify(ctx.req.headers.authorization.toString(), "some secret");
         id = decoded.id;
     }
-    return id;
+    return parseInt(id + "");
 };
 //# sourceMappingURL=getId.js.map

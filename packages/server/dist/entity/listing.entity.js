@@ -104,7 +104,7 @@ __decorate([
 ], Listing.prototype, "zip", void 0);
 __decorate([
     type_graphql_1.Field(() => graphql_type_json_1.GraphQLJSONObject),
-    core_1.Property(),
+    core_1.Property({ type: core_1.JsonType }),
     __metadata("design:type", Object)
 ], Listing.prototype, "location", void 0);
 __decorate([
@@ -118,10 +118,10 @@ Listing = __decorate([
 ], Listing);
 exports.Listing = Listing;
 type_graphql_1.registerEnumType(common_1.KindOfPlace, {
-    name: "KindOfPlace",
+    name: "KindOfPlaceEnum",
 });
 type_graphql_1.registerEnumType(common_1.PropertyType, {
-    name: "PropertyType",
+    name: "PropertyTypeEnum",
 });
 var common_2 = require("@airbnb/common");
 Object.defineProperty(exports, "KindOfPlace", { enumerable: true, get: function () { return common_2.KindOfPlace; } });

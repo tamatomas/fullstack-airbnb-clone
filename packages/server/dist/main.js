@@ -48,10 +48,7 @@ exports.main = async () => {
     });
     const app = express_1.default();
     app.use(cors_1.default({
-        origin: [
-            "https://fullstack-counter.netlify.app",
-            "http://127.0.0.1:4200",
-        ],
+        origin: ["https://fullstack-counter.netlify.app"],
         credentials: true,
     }));
     const RedisStore = connect_redis_1.default(express_session_1.default);
