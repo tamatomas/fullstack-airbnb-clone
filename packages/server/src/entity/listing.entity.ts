@@ -8,8 +8,13 @@ import {
 } from "@mikro-orm/core";
 import { Field, ID, ObjectType, registerEnumType } from "type-graphql";
 import { GraphQLJSONObject } from "graphql-type-json";
-import { KindOfPlace, PropertyType, Location } from "@airbnb/common";
+import { KindOfPlace, PropertyType } from "@airbnb/common";
 import { User } from "./user.entity";
+
+export type Location = {
+  lat: number;
+  lon: number;
+};
 
 @ObjectType()
 @Entity()

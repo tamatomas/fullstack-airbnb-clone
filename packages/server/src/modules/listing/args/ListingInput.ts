@@ -1,10 +1,10 @@
-import { Location } from "@airbnb/common";
 import { GraphQLJSONObject } from "graphql-type-json";
 import { Field, ID, InputType, Int } from "type-graphql";
 import {
   KindOfPlace,
   Listing,
   PropertyType,
+  Location,
 } from "../../../entity/listing.entity";
 
 @InputType()

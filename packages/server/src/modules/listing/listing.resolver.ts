@@ -1,8 +1,7 @@
 import { Arg, Int, Mutation, Query, Resolver } from "type-graphql";
 import { DI } from "../../main";
-import { Listing, User } from "../../entity";
+import { Listing, Location, User } from "../../entity";
 import { ListingInput } from "./args/ListingInput";
-import { Location } from "@airbnb/common";
 import { GraphQLJSONObject } from "graphql-type-json";
 
 @Resolver()
