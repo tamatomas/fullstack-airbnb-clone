@@ -2,7 +2,6 @@ import { Arg, Int, Mutation, Query, Resolver } from "type-graphql";
 import { DI } from "../../main";
 import { Listing, User } from "../../entity";
 import { ListingInput } from "./args/ListingInput";
-import { Location } from "@airbnb/common";
 
 @Resolver()
 export class ListingResolver {
@@ -13,10 +12,10 @@ export class ListingResolver {
     @Arg("lat") lat: number,
     @Arg("lon") lon: number
   ): Promise<Listing[]> {
-    const location: Location = { lat, lon };
     const list = await DI.em.find(Listing, {
       city,
-      location,
+      lat,
+      lon,
       nguests: guests,
     });
 
@@ -36,7 +35,6 @@ export class ListingResolver {
   async createListing(
     @Arg("data") { kind, nguests, ownerid, lat, lon }: ListingInput
   ): Promise<Listing> {
-    const location: Location = { lat, lon };
     const list = new Listing();
     const user = await DI.em.findOne(User, { id: ownerid });
 
@@ -44,7 +42,8 @@ export class ListingResolver {
 
     list.owner = user;
     list.kind = kind;
-    list.location = location;
+    list.lat = lat;
+    list.lon = lon;
     list.nguests = nguests;
     await DI.em.persist(list).flush();
 
@@ -62,10 +61,6 @@ export class ListingResolver {
   ): Promise<Listing> {
     const list = await DI.em.findOne(Listing, { id: updateListingData.id });
     if (!list) throw new Error("Listing not founded");
-    const location: Location = {
-      lat: updateListingData.lat,
-      lon: updateListingData.lon,
-    };
     list.bedrooms = updateListingData.bedrooms;
     list.amenities = updateListingData.amenities;
     list.city = updateListingData.city;
@@ -74,7 +69,8 @@ export class ListingResolver {
     list.dedicated = updateListingData.dedicated;
     list.description = updateListingData.description;
     list.kind = updateListingData.kind;
-    list.location = location;
+    list.lat = updateListingData.lat;
+    list.lon = updateListingData.lon;
     list.nguests = updateListingData.nguests;
     list.price = updateListingData.price;
     list.proptype = updateListingData.proptype;
