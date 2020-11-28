@@ -10,7 +10,7 @@ module.exports = {
   {
     resolve: 'gatsby-plugin-apollo',
     options: {
-      uri: 'https://example.com/graphql',
+      uri: 'https://fullstack-airbnbclone.herokuapp.com/graphql',
       credentials: "include"
     }
   }],
