@@ -3,7 +3,7 @@ import { FaUserCircle } from "react-icons/fa"
 import { FcMenu } from "react-icons/fc"
 import { createUseStyles } from "react-jss"
 import { useOutsideWState } from "../utils/helpers/useOutsideWState"
-import { Popup } from "./Popup"
+//import { Popup } from "./Popup"
 import { LoginForm } from "./auth/LoginForm"
 import { SignupForm } from "./auth/SignupForm"
 import { GrClose } from "react-icons/gr"
@@ -129,7 +129,7 @@ export const AccountMenu = (props: Props) => {
           </div>
         )}
       </div>
-      {showPopup && (
+      {/*showPopup && (
         <Popup onHide={() => setShowPopup(false)} style={styles.popupContainer}>
           <React.Fragment>
             <div className={styles.titleView}>
@@ -146,7 +146,7 @@ export const AccountMenu = (props: Props) => {
             </div>
           </React.Fragment>
         </Popup>
-      )}
+      )*/}
     </React.Fragment>
   )
 }

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { createUseStyles } from "react-jss"
-import { BsHouse } from "react-icons/bs"
+//import { BsHouse } from "react-icons/bs"
 import { AccountMenu } from "../components/AccountMenu"
-import "fontsource-poppins"
-import "fontsource-poppins/500.css"
-import "react-datepicker/dist/react-datepicker-cssmodules.min.css"
+//import "fontsource-poppins"
+//import "fontsource-poppins/500.css"
+//import "react-datepicker/dist/react-datepicker-cssmodules.min.css"
 
 const MSG_HEIGHT = 50
 
@@ -76,9 +76,7 @@ export default function () {
       </div>
       <img className={styles.img} src={"./aribnbckg.webp"} />
       <div className={`${styles.navbar} ${fixed ? styles.fixednavbar : ""}`}>
-        <div className={styles.icon}>
-          <BsHouse />
-        </div>
+        <div className={styles.icon}>{/* <BsHouse />*/}</div>
         <div className={styles.nav}>
           <AccountMenu />
         </div>
