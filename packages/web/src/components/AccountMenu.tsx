@@ -4,9 +4,9 @@ import { FcMenu } from "react-icons/fc"
 import { createUseStyles } from "react-jss"
 import { useOutsideWState } from "../utils/helpers/useOutsideWState"
 import { Popup } from "./Popup"
-//import { LoginForm } from "./auth/LoginForm"
-//import { SignupForm } from "./auth/SignupForm"
-//import { GrClose } from "react-icons/gr"
+import { LoginForm } from "./auth/LoginForm"
+import { SignupForm } from "./auth/SignupForm"
+import { GrClose } from "react-icons/gr"
 
 interface Props {}
 
@@ -131,7 +131,7 @@ export const AccountMenu = (props: Props) => {
       </div>
       {showPopup && (
         <Popup onHide={() => setShowPopup(false)} style={styles.popupContainer}>
-          {/*<React.Fragment>
+          <React.Fragment>
             <div className={styles.titleView}>
               <GrClose
                 size={16}
@@ -144,7 +144,7 @@ export const AccountMenu = (props: Props) => {
               {signup && <SignupForm />}
               {login && <LoginForm />}
             </div>
-          </React.Fragment>*/}
+          </React.Fragment>
         </Popup>
       )}
     </React.Fragment>
