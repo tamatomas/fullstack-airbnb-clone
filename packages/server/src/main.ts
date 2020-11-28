@@ -58,7 +58,7 @@ export const main = async () => {
   const app = Express();
   app.use(
     cors({
-      origin: ["https://fullstack-counter.netlify.app"],
+      origin: ["https://cranky-raman-5ebbf9.netlify.app/"],
       credentials: true,
     })
   );
