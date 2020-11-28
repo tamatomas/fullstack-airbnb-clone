@@ -1,7 +1,7 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client"
 
 const link = createHttpLink({
-  uri: "http://localhost:8002/graphql",
+  uri: "https://fullstack-airbnbclone.herokuapp.com/graphql",
   credentials: "include",
 })
 
