@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { ILoginInputs, loginSchema } from "@airbnb/common"
 import { LOGIN } from "@airbnb/controller"
 import { useMutation } from "@apollo/client"
-//import { useStore } from "../../utils/store/store"
+import { useStore } from "../../utils/store/store"
 
 export const LoginForm = () => {
   const [login, data] = useMutation<{ login: string }>(LOGIN)
@@ -16,10 +16,10 @@ export const LoginForm = () => {
   const onSubmit = (data: ILoginInputs) => {
     login({ variables: data })
   }
-  /*const setAuth = useStore(state => state.setAuth)
+  const setAuth = useStore(state => state.setAuth)
   if (data.data?.login) {
     setAuth(true)
-  }*/
+  }
   return (
     <React.Fragment>
       <Controller

@@ -1,6 +1,8 @@
 import create from "zustand"
 import { persist } from "zustand/middleware"
-import "localstorage-polyfill"
+if (!global.window) {
+  require("localstorage-polyfill")
+}
 
 export type State = {
   isAuth: boolean
