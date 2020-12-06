@@ -4,6 +4,5 @@ export declare const signupSchema: yup.ObjectSchema<yup.Shape<object | undefined
     lastname: string;
     email: string;
     password: string;
-    phone: string;
     born: object;
 }>, object>;

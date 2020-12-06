@@ -15,6 +15,5 @@ export const signupSchema = yup.object().shape({
       "Must contain at least 8 characters, one uppercase, one lowercase, one number and one special character"
     )
     .required("Password is required"),
-  phone: yup.string().required(),
   born: yup.object().required(),
 });

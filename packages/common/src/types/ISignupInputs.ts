@@ -4,6 +4,5 @@ export interface ISingupInputs {
   email: string;
   password: string;
   confirmed: boolean;
-  phone: string;
   born: Date;
 }
