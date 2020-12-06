@@ -41,7 +41,7 @@ const dataFromEnum = Object.entries(KindOfPlace)
   .map((e) => ({ name: e[1], id: e[0] }));
 
 export const BecomeAHost = (props: Props) => {
-  const { data } = useQuery<{ data: User }>(USER_DATA);
+  useQuery<{ data: User }>(USER_DATA);
   const styles = useStyles();
   const [guests, setGuests] = useState(1);
   const [placeType, setPlaceType] = useState(KindOfPlace.EntirePlace.valueOf());

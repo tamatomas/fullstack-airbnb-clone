@@ -89,7 +89,7 @@ const useMousePositionPercent = (ref: RefObject<HTMLSpanElement>) => {
       x: (mousePosition.x! / ref.current!.offsetWidth) * 100,
       y: (mousePosition.x! / ref.current!.offsetHeight) * 100,
     });
-  }, [mousePosition]);
+  }, [mousePosition, ref]);
   return { x: positionPercent.x, y: positionPercent.y, mouseMove };
 };
 

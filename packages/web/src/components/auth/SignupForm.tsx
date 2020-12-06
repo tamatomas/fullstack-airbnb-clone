@@ -9,7 +9,7 @@ import { useMutation } from "@apollo/client";
 import { DateInput } from "../DateInput";
 
 export const SignupForm = () => {
-  const [register, data] = useMutation<{ register: User }>(REGISTER);
+  const [register] = useMutation<{ register: User }>(REGISTER);
   const { control, handleSubmit, errors } = useForm<ISingupInputs>({
     resolver: yupResolver(signupSchema),
   });

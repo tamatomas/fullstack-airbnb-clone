@@ -94,7 +94,7 @@ export const LocationAutoComplete = () => {
 const getListingLocationFromGResults = (result: google.maps.GeocoderResult) => {
   let newlisting: Partial<Listing> = {};
 
-  result.address_components.map((components) => {
+  result.address_components.forEach((components) => {
     if (components.types.find((type) => type === "route" || type === "street"))
       newlisting!.street = components.long_name;
     if (components.types.find((type) => type === "locality"))

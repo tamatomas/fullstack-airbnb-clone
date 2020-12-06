@@ -19,7 +19,7 @@ const dataFromEnum = Object.entries(PropertyType)
   .map((e) => ({ name: e[1], id: e[0] }));
 
 export const Room = (props: Props) => {
-  const { data } = useQuery<{ data: User }>(USER_DATA);
+  useQuery<{ data: User }>(USER_DATA);
   const [dedicated, setDedicated] = useState(false);
   const [propType, setPropType] = useState(PropertyType.House.valueOf());
 

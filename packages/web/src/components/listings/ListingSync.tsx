@@ -1,10 +1,6 @@
-import { UPDATE, CREATE } from "@airbnb/controller";
-import { useMutation } from "@apollo/client";
-import React, { useEffect } from "react";
+import React from "react";
 import { createUseStyles } from "react-jss";
-import { useListingStore } from "../../utils/store/listingstore";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { Listing } from "@airbnb/common";
 import { useSync } from "../../utils/helpers/useSync";
 
 const useStyles = createUseStyles({

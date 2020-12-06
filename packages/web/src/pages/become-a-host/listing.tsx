@@ -1,13 +1,13 @@
 import React from "react";
-import { Listing, User } from "@airbnb/common";
-import { FIND, USER_DATA } from "@airbnb/controller";
+import { User } from "@airbnb/common";
+import { USER_DATA } from "@airbnb/controller";
 import { useQuery } from "@apollo/client";
 import { Layout, Label, CompletionIndicator } from "../../components";
 
 interface Props {}
 
 export const ViewListing = (props: Props) => {
-  const { data } = useQuery<{ data: User }>(USER_DATA);
+  useQuery<{ data: User }>(USER_DATA);
 
   /*const { data: listing } = useQuery<{ data: Listing }>(FIND, {
     variables: { id: props.id },

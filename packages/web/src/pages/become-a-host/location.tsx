@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Listing, User } from "@airbnb/common";
+import React, { useEffect } from "react";
+import { User } from "@airbnb/common";
 import { USER_DATA } from "@airbnb/controller";
 import { useQuery } from "@apollo/client";
 import {
@@ -46,7 +46,7 @@ type FormInput = {
 
 export function Location(props: Props) {
   const styles = useStyles();
-  const { data } = useQuery<{ data: User }>(USER_DATA);
+  useQuery<{ data: User }>(USER_DATA);
   const listing = useListingStore((state) => state.listing);
   const { errors, setValue, getValues, control } = useForm<FormInput>({
     resolver: yupResolver(schema as any),
@@ -57,7 +57,7 @@ export function Location(props: Props) {
     if (listing?.state) setValue("state", listing?.state);
     if (listing?.street) setValue("street", listing?.street);
     if (listing?.zip) setValue("zip", listing?.zip);
-  }, []);
+  }, [listing, setValue]);
 
   return (
     <React.Fragment>

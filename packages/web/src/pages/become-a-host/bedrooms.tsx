@@ -16,7 +16,7 @@ import { useListingStore } from "../../utils/store/listingstore";
 interface Props {}
 
 export function Bedrooms(props: Props) {
-  const { data } = useQuery<{ data: User }>(USER_DATA);
+  useQuery<{ data: User }>(USER_DATA);
   const nguests = useListingStore((state) => state.listing)?.nguests;
   useEffect(() => {
     if (nguests) setGuests(nguests);

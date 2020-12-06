@@ -10,13 +10,13 @@ export const useSync = () => {
       save()
         .then((data) => updateListing(data.data!))
         .catch((err) => console.log(err));
-  }, []);
+  }, [listing, save, updateListing]);
 
   useEffect(() => {
     if (listing?.id)
       save()
         .then((data) => updateListing(data.data!))
         .catch((err) => console.log(err));
-  }, [listing]);
+  }, [listing, save, updateListing]);
   return { save, listing };
 };

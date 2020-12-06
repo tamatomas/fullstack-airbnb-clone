@@ -33,7 +33,7 @@ const useStyles = createUseStyles({
 interface Props {}
 
 export const Hosting = (props: Props) => {
-  const { data } = useQuery<{ data: User }>(USER_DATA);
+  useQuery<{ data: User }>(USER_DATA);
   const styles = useStyles();
 
   return (

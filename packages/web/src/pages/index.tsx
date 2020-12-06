@@ -76,7 +76,7 @@ export const Main = () => {
       <div className={styles.msg}>
         <p className={styles.cvdtxt}>Get the latest on our Covid-19 response</p>
       </div>
-      <img className={styles.img} src={"./airbnbphoto.webp"} />
+      <img className={styles.img} src={"./airbnbphoto.webp"} alt={"bckg"} />
       <div className={`${styles.navbar} ${fixed ? styles.fixednavbar : ""}`}>
         <div className={styles.icon}>{<BsHouse />}</div>
         <div className={styles.nav}>

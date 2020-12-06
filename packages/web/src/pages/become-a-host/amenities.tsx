@@ -15,7 +15,7 @@ import { useListingStore } from "../../utils/store/listingstore";
 interface Props {}
 
 export function Amenities(props: Props) {
-  const { data } = useQuery<{ data: User }>(USER_DATA);
+  useQuery<{ data: User }>(USER_DATA);
   const [amenities, setAmenities] = useState<string[]>([]);
 
   const storeAmenities = useListingStore((state) => state.listing)?.amenities;

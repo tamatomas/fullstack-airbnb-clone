@@ -11,5 +11,5 @@ export const useIsAuth = () => {
     if (data?.data.id) {
       setAuth(true);
     }
-  }, [data?.data]);
+  }, [data?.data, setAuth]);
 };

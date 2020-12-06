@@ -28,7 +28,7 @@ type FormInput = {
   price: number;
 };
 export function Description(props: Props) {
-  const { data } = useQuery<{ data: User }>(USER_DATA);
+  useQuery<{ data: User }>(USER_DATA);
   const listing = useListingStore((state) => state.listing);
   const { errors, setValue, getValues, control } = useForm<FormInput>({
     resolver: yupResolver(schema as any),
@@ -37,7 +37,8 @@ export function Description(props: Props) {
     setValue("title", listing?.title);
     setValue("description", listing?.description);
     setValue("price", listing?.price);
-  }, []);
+  }, [setValue, listing]);
+
   console.log(props);
   return (
     <React.Fragment>
