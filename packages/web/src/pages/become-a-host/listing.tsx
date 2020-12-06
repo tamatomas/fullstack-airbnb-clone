@@ -1,18 +1,27 @@
 import React from "react";
-import { User } from "@airbnb/common";
-import { USER_DATA } from "@airbnb/controller";
+import { Listing, User } from "@airbnb/common";
+import { FIND, USER_DATA } from "@airbnb/controller";
 import { useQuery } from "@apollo/client";
 import { Layout, Label, CompletionIndicator } from "../../components";
+import { RouteComponentProps, useParams, withRouter } from "react-router-dom";
+import { useListingStore } from "../../utils/store/listingstore";
 
-interface Props {}
+interface Props extends RouteComponentProps {}
 
-export const ViewListing = (props: Props) => {
+export const ViewListing = withRouter((props: Props) => {
   useQuery<{ data: User }>(USER_DATA);
+  const { id } = useParams<{ id: string }>();
+  const { data } = useQuery<{ data: Listing }>(FIND, {
+    variables: { id: parseInt(id) },
+  });
 
-  /*const { data: listing } = useQuery<{ data: Listing }>(FIND, {
-    variables: { id: props.id },
-  });*/
-  console.log(props);
+  const setListing = useListingStore((state) => state.setListing);
+
+  const handleClick = (to: string) => {
+    setListing(data?.data!);
+    props.history.push(to + data?.data.id);
+  };
+
   return (
     <React.Fragment>
       <Layout formstyle={{ paddingBottom: 100 }}>
@@ -23,17 +32,50 @@ export const ViewListing = (props: Props) => {
             size={16}
           />
           <CompletionIndicator
-            label={"Property and Guests"}
-            completed
-            to={"/asd"}
+            label={"Room"}
+            completed={
+              !!data?.data.proptype &&
+              data?.data.dedicated !== null &&
+              data?.data.dedicated !== undefined
+            }
+            onClick={() => handleClick("/become-a-host/room/")}
           />
           <CompletionIndicator
-            to={"/asd"}
-            label={"Property and Guests"}
-            completed={false}
+            label={"Bedrooms"}
+            completed={
+              !!data?.data.nguests && !!data?.data.bedrooms && !!data?.data.beds
+            }
+            onClick={() => handleClick("/become-a-host/bedrooms/")}
+          />
+          <CompletionIndicator
+            label={"Location"}
+            completed={
+              !!data?.data.country &&
+              !!data?.data.street &&
+              !!data?.data.city &&
+              !!data?.data.state &&
+              !!data?.data.zip
+            }
+            onClick={() => handleClick("/become-a-host/location/")}
+          />
+          <CompletionIndicator
+            label={"Amenities"}
+            completed={
+              !!data?.data.amenities && data?.data.amenities?.length > 1
+            }
+            onClick={() => handleClick("/become-a-host/amenities/")}
+          />
+          <CompletionIndicator
+            label={"Description"}
+            completed={
+              !!data?.data.title &&
+              !!data?.data.description &&
+              !!data?.data.price
+            }
+            onClick={() => handleClick("/become-a-host/description/")}
           />
         </React.Fragment>
       </Layout>
     </React.Fragment>
   );
-};
+});

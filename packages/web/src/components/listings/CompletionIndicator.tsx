@@ -1,9 +1,7 @@
-import { Button } from "../../components";
 import React from "react";
 import { createUseStyles } from "react-jss";
 import { BiCheck } from "react-icons/bi";
 import { RiErrorWarningFill } from "react-icons/ri";
-import { Link } from "react-router-dom";
 
 const useStyles = createUseStyles({
   container: {
@@ -30,18 +28,21 @@ const useStyles = createUseStyles({
     fontFamily: "poppins",
     fontSize: 17,
     color: "black",
+    textDecoration: "underline",
+    margin: 0,
+    cursor: "pointer",
   },
 });
 
 interface Props {
   label: string;
-  to: string;
+  onClick(): void;
   completed?: boolean;
 }
 
 export const CompletionIndicator = (props: Props) => {
   const styles = useStyles();
-  console.log(props);
+
   return (
     <div className={styles.container}>
       <div className={styles.inline}>
@@ -52,11 +53,10 @@ export const CompletionIndicator = (props: Props) => {
             <RiErrorWarningFill size={18} color={"#008489"} />
           )}
         </div>
-        <Link className={styles.label} to={props.to}>
+        <p className={styles.label} onClick={() => props.onClick()}>
           {props.label}
-        </Link>
+        </p>
       </div>
-      <Button title={"Continue"} style={{ fontWeight: 500 }} />
     </div>
   );
 };
