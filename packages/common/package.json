@@ -8,7 +8,7 @@
     "build": "rimraf ./dist && tsc"
   },
   "resolutions": {
-    "graphql": "^15.4.0"
+    "graphql": "14.6.0"
   },
   "dependencies": {
     "yup": "^0.31.0"

@@ -14,7 +14,7 @@ export const USER_DATA = gql`
 `;
 
 export const USER_LISTINGS = gql`
-  query {
+  query data {
     data {
       id
       listings {

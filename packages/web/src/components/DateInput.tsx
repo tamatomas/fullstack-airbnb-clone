@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react"
-import { createUseStyles } from "react-jss"
-import { useOutside } from "../utils/helpers/useOutside"
-import DatePicker from "react-datepicker"
+import React, { useRef, useState } from "react";
+import { createUseStyles } from "react-jss";
+import { useOutside } from "../utils/helpers/useOutside";
+import DatePicker from "react-datepicker";
 
-const InputColor = { border: "#afafaf", label: "#717171" }
+const InputColor = { border: "#afafaf", label: "#717171" };
 
 const useStyles = createUseStyles({
   container: {
@@ -66,26 +66,26 @@ const useStyles = createUseStyles({
       outline: "none",
     },
   },
-})
+});
 
 interface Props
   extends React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  label: string
-  error?: boolean
-  errmsg?: string
-  date?: boolean
+  label: string;
+  error?: boolean;
+  errmsg?: string;
+  date?: boolean;
 }
 
 export const DateInput = (props: Props) => {
-  const styles = useStyles()
-  const [focused, setFocused] = useState(false)
-  const [value, setValue] = useState(new Date())
-  const inptRef = useRef(null)
-  useOutside(inptRef, () => setFocused(false))
-  const Input = ({ value, onClick }: { value: any; onClick: any }) => (
+  const styles = useStyles();
+  const [focused, setFocused] = useState(false);
+  const [value, setValue] = useState(new Date());
+  const inptRef = useRef(null);
+  useOutside(inptRef, () => setFocused(false));
+  const Input = ({ value, onClick }: { value?: any; onClick?: any }) => (
     <p
       className={styles.input}
       onClick={onClick}
@@ -93,7 +93,7 @@ export const DateInput = (props: Props) => {
     >
       {value}
     </p>
-  )
+  );
   return (
     <div
       className={`${styles.container} ${focused && styles.containerFocus} ${
@@ -115,10 +115,10 @@ export const DateInput = (props: Props) => {
       <div className={styles.inptcontainer}>
         <DatePicker
           selected={value}
-          onChange={date => setValue(date as Date)}
+          onChange={(date) => setValue(date as Date)}
           customInput={<Input />}
         />
       </div>
     </div>
-  )
-}
+  );
+};

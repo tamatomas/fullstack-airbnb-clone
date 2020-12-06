@@ -42,8 +42,8 @@ export class ListingInput implements Partial<Listing> {
   @Field({ nullable: true })
   bedrooms?: number;
 
-  @Field({ nullable: true })
-  amenities?: string;
+  @Field(() => [String], { nullable: true })
+  amenities?: string[];
 
   @Field({ nullable: true })
   country?: string;

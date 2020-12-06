@@ -1,49 +1,61 @@
 {
   "name": "@airbnb/web",
-  "private": true,
   "version": "0.1.0",
-  "license": "0BSD",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
+  "private": true,
   "dependencies": {
-    "@apollo/client": "^3.2.9",
-    "@hookform/resolvers": "^1.0.1",
+    "@apollo/client": "^3.3.4",
+    "@hookform/resolvers": "^1.1.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
     "fontsource-poppins": "^3.0.10",
-    "gatsby": "^2.26.1",
-    "gatsby-plugin-apollo": "^3.0.2",
-    "react": "^16.14.0",
+    "react": "^17.0.1",
+    "react-country-region-selector": "^3.0.1",
     "react-datepicker": "^3.3.0",
-    "react-dom": "^16.14.0",
-    "react-hook-form": "^6.11.5",
-    "react-icons": "^3.11.0",
+    "react-dom": "^17.0.1",
+    "react-hook-form": "^6.12.2",
+    "react-icons": "^4.1.0",
     "react-jss": "^10.5.0",
-    "yup": "^0.31.0",
-    "zustand": "^3.2.0",
-    "zustand-persist": "^0.3.0"
+    "react-places-autocomplete": "^7.3.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "typescript": "^4.1.2",
+    "web-vitals": "^0.2.4",
+    "yup": "^0.32.1",
+    "zustand": "^3.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "@types/react-datepicker": "^3.1.1",
-    "localstorage-polyfill": "^1.0.1",
-    "prettier": "2.1.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
-  "resolutions": {
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
-    "@types/react": "17.0.0",
-    "@types/react-dom": "17.0.0"
+    "@types/react-datepicker": "^3.1.2",
+    "@types/react-places-autocomplete": "^7.2.6",
+    "@types/react-router-dom": "^5.1.6",
+    "prettier": "^2.2.1"
   }
 }

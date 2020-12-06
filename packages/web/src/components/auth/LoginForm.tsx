@@ -1,24 +1,24 @@
-import React from "react"
-import { Input } from "../Input"
-import { Button } from "../Button"
-import { Controller, useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
-import { ILoginInputs, loginSchema } from "@airbnb/common"
-import { LOGIN } from "@airbnb/controller"
-import { useMutation } from "@apollo/client"
-import { useStore } from "../../utils/store/store"
+import React from "react";
+import { Input } from "../Input";
+import { ButtonWithGradient } from "../ButtonWithGradient";
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ILoginInputs, loginSchema } from "@airbnb/common";
+import { LOGIN } from "@airbnb/controller";
+import { useMutation } from "@apollo/client";
+import { useAuthStore } from "../../utils/store/authstore";
 
 export const LoginForm = () => {
-  const [login, data] = useMutation<{ login: string }>(LOGIN)
+  const [login, data] = useMutation<{ login: string }>(LOGIN);
   const { control, handleSubmit, errors } = useForm<ILoginInputs>({
     resolver: yupResolver(loginSchema),
-  })
+  });
   const onSubmit = (data: ILoginInputs) => {
-    login({ variables: data })
-  }
-  const setAuth = useStore(state => state.setAuth)
+    login({ variables: data });
+  };
+  const setAuth = useAuthStore((state) => state.setAuth);
   if (data.data?.login) {
-    setAuth(true)
+    setAuth(true);
   }
   return (
     <React.Fragment>
@@ -55,7 +55,7 @@ export const LoginForm = () => {
         rules={{ required: true }}
         defaultValue=""
       />
-      <Button title={"Log in"} onClick={handleSubmit(onSubmit)} />
+      <ButtonWithGradient title={"Log in"} onClick={handleSubmit(onSubmit)} />
     </React.Fragment>
-  )
-}
+  );
+};

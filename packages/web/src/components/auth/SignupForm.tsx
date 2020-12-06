@@ -1,21 +1,21 @@
-import React from "react"
-import { Input } from "../Input"
-import { Button } from "../Button"
-import { Controller, useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
-import { ISingupInputs, signupSchema, User } from "@airbnb/common"
-import { REGISTER } from "@airbnb/controller"
-import { useMutation } from "@apollo/client"
-import { DateInput } from "../DateInput"
+import React from "react";
+import { Input } from "../Input";
+import { ButtonWithGradient } from "../ButtonWithGradient";
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ISingupInputs, signupSchema, User } from "@airbnb/common";
+import { REGISTER } from "@airbnb/controller";
+import { useMutation } from "@apollo/client";
+import { DateInput } from "../DateInput";
 
 export const SignupForm = () => {
-  const [register, data] = useMutation<{ register: User }>(REGISTER)
+  const [register, data] = useMutation<{ register: User }>(REGISTER);
   const { control, handleSubmit, errors } = useForm<ISingupInputs>({
     resolver: yupResolver(signupSchema),
-  })
+  });
   const onSubmit = (data: ISingupInputs) => {
-    register({ variables: data })
-  }
+    register({ variables: data });
+  };
 
   return (
     <React.Fragment>
@@ -100,7 +100,7 @@ export const SignupForm = () => {
         rules={{ required: true }}
         defaultValue=""
       />
-      <Button title={"Sign up"} onClick={handleSubmit(onSubmit)} />
+      <ButtonWithGradient title={"Sign up"} onClick={handleSubmit(onSubmit)} />
     </React.Fragment>
-  )
-}
+  );
+};

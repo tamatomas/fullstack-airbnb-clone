@@ -11,7 +11,7 @@
     "@apollo/client": "^3.2.7"
   },
   "resolutions": {
-    "graphql": "^15.4.0",
+    "graphql": "14.6.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "@types/react": "17.0.0",

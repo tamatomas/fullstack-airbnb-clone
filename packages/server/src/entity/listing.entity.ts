@@ -1,4 +1,5 @@
 import {
+  ArrayType,
   Entity,
   Enum,
   JsonType,
@@ -23,68 +24,68 @@ export class Listing {
   @PrimaryKey()
   id!: number;
 
-  @Field()
-  @Property()
+  @Field({ nullable: true })
+  @Property({ nullable: true })
   title?: string;
 
-  @Field()
-  @Property()
+  @Field({ nullable: true })
+  @Property({ nullable: true })
   description?: string;
 
-  @Field()
-  @Property()
+  @Field({ nullable: true })
+  @Property({ nullable: true })
   price?: number;
 
-  @Field()
-  @Property()
+  @Field({ nullable: true })
+  @Property({ nullable: true })
   currency?: string;
 
   @Field(() => KindOfPlace)
   @Enum()
   kind!: KindOfPlace;
 
-  @Field(() => PropertyType)
-  @Enum()
+  @Field(() => PropertyType, { nullable: true })
+  @Enum({ nullable: true })
   proptype?: PropertyType;
 
   @Field()
   @Property()
   nguests!: number;
 
-  @Field()
-  @Property()
+  @Field({ nullable: true })
+  @Property({ nullable: true })
   dedicated?: boolean;
 
-  @Field()
-  @Property()
+  @Field({ nullable: true })
+  @Property({ nullable: true })
   beds?: number;
 
-  @Field()
-  @Property()
+  @Field({ nullable: true })
+  @Property({ nullable: true })
   bedrooms?: number;
 
-  @Field()
-  @Property()
-  amenities?: string;
+  @Field(() => [String], { nullable: true })
+  @Property({ type: ArrayType, nullable: true })
+  amenities?: string[];
 
-  @Field()
-  @Property()
+  @Field({ nullable: true })
+  @Property({ nullable: true })
   country?: string;
 
-  @Field()
-  @Property()
+  @Field({ nullable: true })
+  @Property({ nullable: true })
   state?: string;
 
-  @Field()
-  @Property()
+  @Field({ nullable: true })
+  @Property({ nullable: true })
   city?: string;
 
-  @Field()
-  @Property()
+  @Field({ nullable: true })
+  @Property({ nullable: true })
   street?: string;
 
-  @Field()
-  @Property()
+  @Field({ nullable: true })
+  @Property({ nullable: true })
   zip?: string;
 
   @Field(() => GraphQLJSONObject)

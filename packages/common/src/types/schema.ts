@@ -22,9 +22,9 @@ export type Query = {
 
 
 export type QuerySearchArgs = {
-  city?: Maybe<Scalars['String']>;
-  location?: Maybe<Scalars['JSONObject']>;
-  guests?: Maybe<Scalars['Float']>;
+  location: Scalars['JSONObject'];
+  guests: Scalars['Float'];
+  city: Scalars['String'];
 };
 
 
@@ -35,39 +35,39 @@ export type QueryFindArgs = {
 export type Listing = {
   __typename?: 'Listing';
   id: Scalars['ID'];
-  title: Scalars['String'];
-  description: Scalars['String'];
-  price: Scalars['Float'];
-  currency: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  price?: Maybe<Scalars['Float']>;
+  currency?: Maybe<Scalars['String']>;
   kind: KindOfPlaceEnum;
-  proptype: PropertyTypeEnum;
+  proptype?: Maybe<PropertyTypeEnum>;
   nguests: Scalars['Float'];
-  dedicated: Scalars['Boolean'];
-  beds: Scalars['Float'];
-  bedrooms: Scalars['Float'];
-  amenities: Scalars['String'];
-  country: Scalars['String'];
-  state: Scalars['String'];
-  city: Scalars['String'];
-  street: Scalars['String'];
-  zip: Scalars['String'];
+  dedicated?: Maybe<Scalars['Boolean']>;
+  beds?: Maybe<Scalars['Float']>;
+  bedrooms?: Maybe<Scalars['Float']>;
+  amenities?: Maybe<Array<Scalars['String']>>;
+  country?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
+  city?: Maybe<Scalars['String']>;
+  street?: Maybe<Scalars['String']>;
+  zip?: Maybe<Scalars['String']>;
   location: Scalars['JSONObject'];
   owner: User;
 };
 
 export enum KindOfPlaceEnum {
-  EntirePlace = 'EntirePlace',
-  PrivateRoom = 'PrivateRoom',
-  SharedRoom = 'SharedRoom'
+  EntirePlace = 0,
+  PrivateRoom = 1,
+  SharedRoom = 2
 }
 
 export enum PropertyTypeEnum {
-  Apartment = 'Apartment',
-  House = 'House',
-  SecondaryUnit = 'SecondaryUnit',
-  UniqueSpace = 'UniqueSpace',
-  Bed = 'Bed',
-  Hotel = 'Hotel'
+  Apartment = 0,
+  House = 1,
+  SecondaryUnit = 2,
+  UniqueSpace = 3,
+  Bed = 4,
+  Hotel = 5
 }
 
 
@@ -149,13 +149,13 @@ export type ListingInput = {
   dedicated?: Maybe<Scalars['Boolean']>;
   beds?: Maybe<Scalars['Float']>;
   bedrooms?: Maybe<Scalars['Float']>;
-  amenities?: Maybe<Scalars['String']>;
+  amenities?: Maybe<Array<Scalars['String']>>;
   country?: Maybe<Scalars['String']>;
   state?: Maybe<Scalars['String']>;
   city?: Maybe<Scalars['String']>;
   street?: Maybe<Scalars['String']>;
   zip?: Maybe<Scalars['String']>;
-  location: Scalars['JSONObject'];
+  location?: Maybe<Scalars['JSONObject']>;
   ownerid: Scalars['Int'];
 };
 

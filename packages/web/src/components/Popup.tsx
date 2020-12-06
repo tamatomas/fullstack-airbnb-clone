@@ -1,11 +1,10 @@
-import React from "react"
-import { createUseStyles } from "react-jss"
-import { GrClose } from "react-icons/gr"
+import React from "react";
+import { createUseStyles } from "react-jss";
 
 interface Props {
-  onHide(): void
-  children: JSX.Element
-  style?: string
+  onHide(): void;
+  children: JSX.Element;
+  style?: string;
 }
 
 const useStyles = createUseStyles({
@@ -28,18 +27,18 @@ const useStyles = createUseStyles({
     maxHeight: "100%",
     overflow: "hidden",
   },
-})
+});
 
 export const Popup = (props: Props) => {
-  const styles = useStyles()
+  const styles = useStyles();
   const stopProp = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.stopPropagation()
-  }
+    e.stopPropagation();
+  };
   return (
     <div className={styles.screen} onClick={() => props.onHide()}>
       <div className={`${styles.container} ${props.style}`} onClick={stopProp}>
         {props.children}
       </div>{" "}
     </div>
-  )
-}
+  );
+};

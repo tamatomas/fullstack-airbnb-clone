@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react"
-import { createUseStyles } from "react-jss"
-import { BsHouse } from "react-icons/bs"
-import { AccountMenu } from "../components/AccountMenu"
-import "fontsource-poppins"
-import "fontsource-poppins/500.css"
-import "react-datepicker/dist/react-datepicker-cssmodules.min.css"
+import React, { useEffect, useState } from "react";
+import { createUseStyles } from "react-jss";
+import { BsHouse } from "react-icons/bs";
+import { AccountMenu } from "../components/home/AccountMenu";
+import { useIsAuth } from "../utils/helpers/useIsAuth";
+import { USER_DATA } from "@airbnb/controller";
+import { User } from "@airbnb/common";
+import { useQuery } from "@apollo/client";
+import { HeaderButton } from "../components";
 
-const MSG_HEIGHT = 50
+const MSG_HEIGHT = 50;
 
 const useStyles = createUseStyles({
   msg: {
@@ -55,33 +57,38 @@ const useStyles = createUseStyles({
   cvdtxt: {
     fontFamily: "poppins",
   },
-})
+});
 
-export default function () {
-  const styles = useStyles()
-  const [fixed, setFixed] = useState(false)
-
+export const Main = () => {
+  const styles = useStyles();
+  const [fixed, setFixed] = useState(false);
+  const { data } = useQuery<{ data: User }>(USER_DATA);
   const scroll = () => {
-    if (window.scrollY > MSG_HEIGHT) setFixed(true)
-    else setFixed(false)
-  }
-
+    if (window.scrollY > MSG_HEIGHT) setFixed(true);
+    else setFixed(false);
+  };
+  useIsAuth();
   useEffect(() => {
-    window.addEventListener("scroll", scroll)
-  }, [])
+    window.addEventListener("scroll", scroll);
+  }, []);
   return (
     <div className={styles.background}>
       <div className={styles.msg}>
         <p className={styles.cvdtxt}>Get the latest on our Covid-19 response</p>
       </div>
-      <img className={styles.img} src={"./aribnbckg.webp"} />
+      <img className={styles.img} src={"./airbnbphoto.webp"} />
       <div className={`${styles.navbar} ${fixed ? styles.fixednavbar : ""}`}>
         <div className={styles.icon}>{<BsHouse />}</div>
         <div className={styles.nav}>
+          {data?.data?.listings?.length && data?.data?.listings?.length > 1 ? (
+            <HeaderButton label={"Switch to hosting"} to={"/hosting"} />
+          ) : (
+            <HeaderButton label={"Become a host"} to={"/become-a-host"} />
+          )}
           <AccountMenu />
         </div>
       </div>
       <div className={styles.view}></div>
     </div>
-  )
-}
+  );
+};
