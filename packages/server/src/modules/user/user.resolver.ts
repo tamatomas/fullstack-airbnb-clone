@@ -46,7 +46,7 @@ export class UserResolver {
     user.email = email;
     user.password = hashedPassword;
     user.born = born;
-    user.confirmed = false;
+    user.confirmed = true;
     user.phone = phone;
 
     await DI.em.persist(user).flush();
