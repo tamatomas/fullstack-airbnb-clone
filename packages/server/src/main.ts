@@ -58,7 +58,7 @@ export const main = async () => {
   const app = Express();
   app.use(
     cors({
-      origin: "https://fullstack-airbnbclone.netlify.app/",
+      origin: "https://fullstack-airbnbclone.netlify.app",
       credentials: true,
     })
   );
