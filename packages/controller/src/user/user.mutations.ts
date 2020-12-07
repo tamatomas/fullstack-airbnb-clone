@@ -31,3 +31,9 @@ export const CHANGE_PSWD = gql`
     changePassword(email: $email, token: $token)
   }
 `;
+
+export const LOGOUT = gql`
+  mutation logout {
+    logout
+  }
+`;

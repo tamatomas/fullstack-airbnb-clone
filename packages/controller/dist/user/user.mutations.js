@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CHANGE_PSWD = exports.CONFIRM_USER = exports.FORGOT_PSWD = exports.REGISTER = exports.LOGIN = void 0;
+exports.LOGOUT = exports.CHANGE_PSWD = exports.CONFIRM_USER = exports.FORGOT_PSWD = exports.REGISTER = exports.LOGIN = void 0;
 const client_1 = require("@apollo/client");
 exports.LOGIN = client_1.gql `
   mutation login($email: String!, $password: String!) {
@@ -27,6 +27,11 @@ exports.CONFIRM_USER = client_1.gql `
 exports.CHANGE_PSWD = client_1.gql `
   mutation changePassword($password: String!, $token: String!) {
     changePassword(email: $email, token: $token)
+  }
+`;
+exports.LOGOUT = client_1.gql `
+  mutation logout {
+    logout
   }
 `;
 //# sourceMappingURL=user.mutations.js.map

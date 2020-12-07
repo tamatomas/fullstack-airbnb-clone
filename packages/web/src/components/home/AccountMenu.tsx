@@ -100,6 +100,9 @@ const AuthMenuItems = () => {
         <Link to="/account" style={{ color: "black", textDecoration: "none" }}>
           <div className={styles.menubtn}>Account</div>
         </Link>
+        <Link to="/logout" style={{ color: "black", textDecoration: "none" }}>
+          <div className={styles.menubtn}>Log out</div>
+        </Link>
       </div>
     </div>
   );

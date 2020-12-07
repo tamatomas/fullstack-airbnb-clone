@@ -83,6 +83,16 @@ export class UserResolver {
   }
 
   @Mutation(() => Boolean)
+  async logout(@Ctx() ctx: Context): Promise<Boolean> {
+    ctx.req.session!.destroy((err) => {
+      if (err) return false;
+      else return true;
+    });
+
+    return true;
+  }
+
+  @Mutation(() => Boolean)
   async forgotPassword(@Arg("email") email: string): Promise<boolean> {
     const user = await DI.em.findOne(User, { email });
 

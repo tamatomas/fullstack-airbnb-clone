@@ -15,7 +15,7 @@ exports.USER_DATA = client_1.gql `
   }
 `;
 exports.USER_LISTINGS = client_1.gql `
-  query {
+  query data {
     data {
       id
       listings {
