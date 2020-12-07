@@ -40,9 +40,9 @@ export class User {
   @Property({ nullable: true })
   phone?: number;
 
-  @Field(() => GraphQLJSONObject)
+  @Field(() => GraphQLJSONObject, { nullable: true })
   @Property({ type: DateType, nullable: true })
-  born!: Date;
+  born: Date;
 
   @Field(() => [Listing])
   @OneToMany(() => Listing, (list) => list.owner)
