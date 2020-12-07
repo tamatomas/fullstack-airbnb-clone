@@ -9,7 +9,7 @@ import {
 } from "type-graphql";
 import { Context } from "../../types/Context";
 import { DI } from "../../main";
-//import { getId } from "../../helpers/getId";
+import { getId } from "../../helpers/getId";
 import { redis } from "../../redis";
 import { confirmUserPrefix, forgotPasswordPrefix } from "../../constants";
 import jwt from "jsonwebtoken";
@@ -21,10 +21,13 @@ import { createConfirmationUrl } from "../../helpers/createConfirmationOnUrl";
 
 @Resolver()
 export class UserResolver {
-  @UseMiddleware()
   @Query(() => User)
-  async data(): Promise<User> {
-    const user = await DI.em.findOne(User, { id: 1 }, { populate: true });
+  async data(@Ctx() ctx: Context): Promise<User> {
+    const user = await DI.em.findOne(
+      User,
+      { id: getId(ctx) },
+      { populate: true }
+    );
 
     return user!;
   }
