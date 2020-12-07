@@ -7,16 +7,19 @@ import { ISingupInputs, signupSchema, User } from "@airbnb/common";
 import { REGISTER } from "@airbnb/controller";
 import { useMutation } from "@apollo/client";
 import { DateInput } from "../DateInput";
+import { RegisterSuccess } from "./RegisterSuccess";
 
 export const SignupForm = () => {
-  const [register] = useMutation<{ register: User }>(REGISTER);
+  const [register, data] = useMutation<{ register: User }>(REGISTER);
   const { control, handleSubmit, errors } = useForm<ISingupInputs>({
     resolver: yupResolver(signupSchema),
   });
   const onSubmit = (data: ISingupInputs) => {
     register({ variables: { data: data } });
   };
-
+  if (data.data?.register.id) {
+    return <RegisterSuccess />;
+  }
   return (
     <React.Fragment>
       <Controller
