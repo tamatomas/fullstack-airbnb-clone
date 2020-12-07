@@ -1,12 +1,5 @@
 import { User } from "../../entity/user.entity";
-import {
-  Arg,
-  Ctx,
-  Mutation,
-  Query,
-  Resolver,
-  UseMiddleware,
-} from "type-graphql";
+import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { Context } from "../../types/Context";
 import { DI } from "../../main";
 import { getId } from "../../helpers/getId";
