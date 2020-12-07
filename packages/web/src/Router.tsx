@@ -8,6 +8,7 @@ import { Description } from "./pages/become-a-host/description";
 import { ViewListing } from "./pages/become-a-host/listing";
 import { Location } from "./pages/become-a-host/location";
 import { Room } from "./pages/become-a-host/room";
+import { ConfirmUser } from "./pages/confirmuser";
 import { Hosting } from "./pages/hosting";
 import { Listings } from "./pages/hosting/listings";
 
@@ -41,6 +42,9 @@ export const Router = () => {
         </Route>
         <Route path={"/become-a-host"} exact>
           <BecomeAHost />
+        </Route>
+        <Route path={"/confirmuser/:token"}>
+          <ConfirmUser />
         </Route>
         <Route path={"/"}>
           <Main />

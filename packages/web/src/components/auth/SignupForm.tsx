@@ -14,7 +14,7 @@ export const SignupForm = () => {
     resolver: yupResolver(signupSchema),
   });
   const onSubmit = (data: ISingupInputs) => {
-    register({ variables: data });
+    register({ variables: { data: data } });
   };
 
   return (
@@ -71,15 +71,15 @@ export const SignupForm = () => {
         control={control}
         render={({ onChange, onBlur, value }) => (
           <DateInput
-            label={"Email"}
+            label={"Birthdate"}
             onChange={onChange}
             value={value}
             onBlur={onBlur}
-            error={!!errors.email}
-            errmsg={errors.email?.message}
+            error={!!errors.born}
+            errmsg={errors.born?.message}
           />
         )}
-        name="email"
+        name="born"
         rules={{ required: true }}
         defaultValue=""
       />

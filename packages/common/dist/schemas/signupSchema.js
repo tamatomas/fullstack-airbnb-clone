@@ -33,6 +33,6 @@ exports.signupSchema = yup.object().shape({
         .min(8, "At least 8 characters")
         .matches(/^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/, "Must contain at least 8 characters, one uppercase, one lowercase, one number and one special character")
         .required("Password is required"),
-    born: yup.object().required(),
+    born: yup.date().required(),
 });
 //# sourceMappingURL=signupSchema.js.map

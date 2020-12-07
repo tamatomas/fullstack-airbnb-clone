@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { createUseStyles } from "react-jss";
 import { useOutside } from "../utils/helpers/useOutside";
 import DatePicker from "react-datepicker";
@@ -77,6 +77,7 @@ interface Props
   error?: boolean;
   errmsg?: string;
   date?: boolean;
+  onChange: (arg: any) => void;
 }
 
 export const DateInput = (props: Props) => {
@@ -84,6 +85,11 @@ export const DateInput = (props: Props) => {
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState(new Date());
   const inptRef = useRef(null);
+  useEffect(() => {
+    if (value) {
+      props.onChange(value);
+    }
+  }, [value, props]);
   useOutside(inptRef, () => setFocused(false));
   const Input = ({ value, onClick }: { value?: any; onClick?: any }) => (
     <p
