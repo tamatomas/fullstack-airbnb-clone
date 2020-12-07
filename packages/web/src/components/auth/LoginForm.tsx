@@ -7,6 +7,7 @@ import { ILoginInputs, loginSchema } from "@airbnb/common";
 import { LOGIN } from "@airbnb/controller";
 import { useMutation } from "@apollo/client";
 import { useAuthStore } from "../../utils/store/authstore";
+import { Redirect } from "react-router-dom";
 
 export const LoginForm = () => {
   const [login, data] = useMutation<{ login: string }>(LOGIN);
@@ -19,6 +20,7 @@ export const LoginForm = () => {
   const setAuth = useAuthStore((state) => state.setAuth);
   if (data.data?.login) {
     setAuth(true);
+    return <Redirect to="/" />;
   }
   return (
     <React.Fragment>
