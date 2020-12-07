@@ -130,7 +130,7 @@ const NotAuthMenuItems = ({
 export const AccountMenu = (props: Props) => {
   const styles = useStyles();
   const { data } = useQuery<{ data: User }>(USER_DATA);
-  const [showPopup, setShowPopup] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
   const [login, setLogin] = useState(true);
   const [signup, setSignup] = useState(true);
   const [title, setTitle] = useState("");
