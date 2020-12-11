@@ -40,8 +40,10 @@ export const SearchResults = (props: Props) => {
   const [hoveredListing, setListing] = useState<Partial<Listing>>({});
   return (
     <div className={styles.listcontainer}>
-      <p className={styles.subtitle}>300+ stays · 1 guest</p>
-      <p className={styles.title}>Stays in Manhattan</p>
+      <p className={styles.subtitle}>{props.listings?.length} stays</p>
+      <p className={styles.title}>
+        Stays in {props.listings && props.listings[0].city}
+      </p>
       {props.listings &&
         props.listings.map((listing) => (
           <ListingItem
@@ -49,26 +51,6 @@ export const SearchResults = (props: Props) => {
             setCurrentListing={(id: string) => setListing({ id })}
           />
         ))}
-      <ListingItem
-        listing={{ id: "1" }}
-        setCurrentListing={(id: string) => setListing({ id })}
-      />
-      <ListingItem
-        listing={{ id: "2" }}
-        setCurrentListing={(id: string) => setListing({ id })}
-      />
-      <ListingItem
-        listing={{ id: "3" }}
-        setCurrentListing={(id: string) => setListing({ id })}
-      />
-      <ListingItem
-        listing={{ id: "4" }}
-        setCurrentListing={(id: string) => setListing({ id })}
-      />
-      <ListingItem
-        listing={{ id: "5" }}
-        setCurrentListing={(id: string) => setListing({ id })}
-      />
     </div>
   );
 };

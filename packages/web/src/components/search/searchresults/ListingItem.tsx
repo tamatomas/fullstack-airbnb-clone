@@ -96,14 +96,14 @@ export const ListingItem = (props: Props) => {
       >
         <div className={styles.img}></div>
         <div className={styles.data}>
-          <p className={styles.subtitle}>Hotel room in Hell's kitchen</p>
-          <p className={styles.title}>Best Hotel Ne York Times, King Room #1</p>
+          <p className={styles.title}>{props.listing?.title}</p>
           <div className={styles.bar}></div>
           <p className={styles.smalldata}>
-            2 guests - 1 bedroom - 1 private bath
+            {props.listing?.nguests} guests - {props.listing?.bedrooms} bedroom
           </p>
           <p className={styles.smalldata}>
-            Wifi Breakfast Hot tub Indoor fireplace
+            {props.listing?.amenities &&
+              [4].map((_, i) => props.listing?.amenities[i] + " · ")}
           </p>
         </div>
       </Link>
@@ -114,7 +114,7 @@ export const ListingItem = (props: Props) => {
       </div>
       <div style={{ position: "relative" }}>
         <div className={styles.pricecont}>
-          <p className={styles.price}>$27</p>
+          <p className={styles.price}>{props.listing?.price}</p>
           <p className={styles.per}>/ night</p>
         </div>
       </div>
