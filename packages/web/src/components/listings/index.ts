@@ -1,5 +1,4 @@
 export * from "./ListingHeader";
-export * from "./InlineCounter";
 export * from "./InputSimple";
 export * from "./Layout";
 export * from "./LocationAutocomplete";

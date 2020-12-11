@@ -1,6 +1,6 @@
-import React from "react"
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai"
-import { createUseStyles } from "react-jss"
+import React from "react";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
   container: {
@@ -9,6 +9,7 @@ const useStyles = createUseStyles({
     padding: "10px 6px",
     alignItems: "center",
     height: 52,
+    boxSizing: "border-box",
   },
   label: {
     fontFamily: "poppins",
@@ -39,27 +40,27 @@ const useStyles = createUseStyles({
     borderColor: "#0084894d",
     color: "#0084894d",
   },
-})
+});
 interface Props {
-  label: string
-  count: number
-  onChange: (count: number) => void
-  max?: number
-  min?: number
+  label: string;
+  count: number;
+  onChange: (count: number) => void;
+  max?: number;
+  min?: number;
 }
 
 export const InlineCounter = (props: Props) => {
-  const styles = useStyles()
+  const styles = useStyles();
   const handleAdd = () => {
     if (props.max) {
-      if (props.count < props.max) props.onChange(props.count + 1)
-    } else props.onChange(props.count + 1)
-  }
+      if (props.count < props.max) props.onChange(props.count + 1);
+    } else props.onChange(props.count + 1);
+  };
   const handleSubstract = () => {
-    if (props.min) {
-      if (props.count > 1) props.onChange(props.count - 1)
-    } else props.onChange(props.count - 1)
-  }
+    if (props.min || props.min === 0) {
+      if (props.count > props.min) props.onChange(props.count - 1);
+    } else props.onChange(props.count - 1);
+  };
   return (
     <div className={styles.container}>
       <p className={styles.label}>{props.label}</p>
@@ -81,5 +82,5 @@ export const InlineCounter = (props: Props) => {
         <AiOutlinePlus size={16} />
       </div>
     </div>
-  )
-}
+  );
+};

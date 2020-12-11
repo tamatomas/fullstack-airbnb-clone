@@ -1,23 +1,27 @@
+import { Listing } from "@airbnb/common";
 import React, { useState } from "react";
-import { createUseStyles } from "react-jss";
+import { SearchBarBtn } from "./SearchBarButton";
 import PlacesAutocomplete, {
   geocodeByAddress,
 } from "react-places-autocomplete";
-import { useListingStore } from "../../utils/store/listingstore";
-import { InputSimple } from "./InputSimple";
+import { createUseStyles } from "react-jss";
+import { RelativeModal } from "../RelativeModal";
 import { getListingLocationFromGResults } from "../../utils/helpers/locationFromGoogleResults";
+import { ImLocation } from "react-icons/im";
 
 const useStyles = createUseStyles({
-  listcont: {
-    backgroundColor: "#fafafa",
-    position: "relative",
-    width: "100%",
-    top: 8,
-    left: 0,
-    borderRadius: 4,
+  modal: {
+    width: 480,
+    height: "auto",
+    maxHeight: 500,
+    minHeight: 200,
+    borderRadius: 30,
+    top: 20,
+    left: -20,
     boxShadow: "0px 0px 4px 0px #000000",
-    display: "flex",
+    backgroundColor: "#fafafa",
     zIndex: 1000,
+    overflow: "hidden",
   },
   list: {
     flex: 1,
@@ -27,9 +31,10 @@ const useStyles = createUseStyles({
     paddingBottom: 6,
   },
   listitem: {
-    padding: 4,
     width: "calc(100% - 8px)",
     display: "flex",
+    boxSizing: "border-box",
+    padding: "10px 12px",
     alignItems: "center",
     fontFamily: "poppins",
     fontSize: 15,
@@ -39,12 +44,25 @@ const useStyles = createUseStyles({
       backgroundColor: "#f1f1f1",
     },
   },
+  icon: {
+    width: 48,
+    height: 48,
+    borderRadius: 6,
+    backgroundColor: "#ebebeb",
+    alignItems: "center",
+    justifyContent: "center",
+    display: "flex",
+    marginRight: 10,
+  },
 });
+interface Props {
+  listing?: Partial<Listing> | null;
+  onChange: (listing: Partial<Listing>) => void;
+}
 
-export const LocationAutoComplete = () => {
+export const LocationInput = (props: Props) => {
   const styles = useStyles();
   const [address, setAddress] = useState<any>();
-  const updateListing = useListingStore((state) => state.updateListing);
   const handleChange = (address: any) => {
     setAddress(address);
   };
@@ -52,7 +70,10 @@ export const LocationAutoComplete = () => {
   const handleSelect = (address: any) => {
     geocodeByAddress(address).then((results) => {
       setAddress(results[0].formatted_address);
-      updateListing(getListingLocationFromGResults(results[0]));
+      props.onChange({
+        ...props.listing,
+        ...getListingLocationFromGResults(results[0]),
+      });
     });
   };
   return (
@@ -62,15 +83,17 @@ export const LocationAutoComplete = () => {
       onSelect={handleSelect}
     >
       {({ getInputProps, suggestions, getSuggestionItemProps }) => (
-        <div>
-          <InputSimple
-            {...(getInputProps({
-              placeholder: "Search Places ...",
+        <SearchBarBtn
+          label={"Location"}
+          inputProps={{
+            ...(getInputProps({
+              placeholder: "Where are you going?",
               className: "location-search-input",
-            }) as any)}
-          />
-          {suggestions.length > 0 && (
-            <div className={styles.listcont}>
+            }) as any),
+          }}
+        >
+          <RelativeModal className={styles.modal}>
+            {suggestions.length > 0 && (
               <div className={styles.list}>
                 {suggestions.map((suggestion) => (
                   <div
@@ -78,13 +101,16 @@ export const LocationAutoComplete = () => {
                       className: styles.listitem,
                     })}
                   >
+                    <div className={styles.icon}>
+                      <ImLocation size={24} />
+                    </div>
                     {suggestion.description}
                   </div>
                 ))}
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </RelativeModal>
+        </SearchBarBtn>
       )}
     </PlacesAutocomplete>
   );

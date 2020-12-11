@@ -57,7 +57,7 @@ export const LoginForm = () => {
         rules={{ required: true }}
         defaultValue=""
       />
-      <ButtonWithGradient title={"Log in"} onClick={handleSubmit(onSubmit)} />
+      <ButtonWithGradient child={"Log in"} onClick={handleSubmit(onSubmit)} />
     </React.Fragment>
   );
 };

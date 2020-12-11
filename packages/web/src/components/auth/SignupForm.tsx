@@ -103,7 +103,7 @@ export const SignupForm = () => {
         rules={{ required: true }}
         defaultValue=""
       />
-      <ButtonWithGradient title={"Sign up"} onClick={handleSubmit(onSubmit)} />
+      <ButtonWithGradient child={"Sign up"} onClick={handleSubmit(onSubmit)} />
     </React.Fragment>
   );
 };

@@ -8,3 +8,4 @@ export * from "./Input";
 export * from "./Popup";
 export * from "./hosting";
 export * from "./HeaderButton";
+export * from "./InlineCounter";

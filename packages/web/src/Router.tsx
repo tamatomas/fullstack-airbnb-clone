@@ -12,6 +12,9 @@ import { Room } from "./pages/become-a-host/room";
 import { ConfirmUser } from "./pages/auth/confirmuser";
 import { Hosting } from "./pages/hosting";
 import { Listings } from "./pages/hosting/listings";
+import { NavBar } from "./components/NavBar";
+import { Search } from "./pages/search/search";
+import { ListingView } from "./pages/search/listing";
 
 export const Router = () => {
   return (
@@ -50,7 +53,16 @@ export const Router = () => {
         <Route path={"/logout"}>
           <Logout />
         </Route>
-        <Route path={"/"}>
+        <Route path={"/listing/:id"}>
+          <NavBar fixed key={"fixed"} />
+          <ListingView />
+        </Route>
+        <Route path={"/search"}>
+          <NavBar fixed key={"fixed"} />
+          <Search />
+        </Route>
+        <Route path={"/"} exact>
+          <NavBar key={"notfixed"} />
           <Main />
         </Route>
       </Switch>

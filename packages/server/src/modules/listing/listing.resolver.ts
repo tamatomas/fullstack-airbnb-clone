@@ -8,13 +8,15 @@ import { GraphQLJSONObject } from "graphql-type-json";
 export class ListingResolver {
   @Query(() => [Listing])
   async search(
-    @Arg("city") city: string,
-    @Arg("guests") guests: number,
-    @Arg("location", () => GraphQLJSONObject) location: Coords
+    @Arg("city") city?: string,
+    @Arg("country") country?: string,
+    @Arg("state") state?: string,
+    @Arg("guests") guests?: number
   ): Promise<Listing[]> {
     const list = await DI.em.find(Listing, {
       city,
-      location,
+      country,
+      state,
       nguests: guests,
     });
 

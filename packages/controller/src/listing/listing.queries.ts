@@ -1,8 +1,13 @@
 import { gql } from "@apollo/client";
 
 export const SEARCH = gql`
-  query search($city: String, $location: JSONObject, $guests: Float) {
-    search(city: $city, location: $location, guests: $guests) {
+  query search(
+    $city: String
+    $country: String
+    $state: String
+    $guests: Float
+  ) {
+    search(city: $city, state: $state, country: $country, guests: $guests) {
       id
       title
       description

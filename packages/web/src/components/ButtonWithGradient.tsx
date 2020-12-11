@@ -10,6 +10,7 @@ const useStyles = createUseStyles({
     justifyContent: "center",
     cursor: "pointer",
     marginTop: 24,
+    transition: "width .3s ease",
   },
   btn: {
     width: "100%",
@@ -69,7 +70,8 @@ interface Props
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
   > {
-  title: string;
+  child?: React.ReactNode | string;
+  contstyle?: React.CSSProperties;
 }
 
 const useMousePositionPercent = (ref: RefObject<HTMLSpanElement>) => {
@@ -105,7 +107,10 @@ export const ButtonWithGradient = (props: Props) => {
       onMouseDown={() => setMouseDown(true)}
       onMouseUp={() => setMouseDown(false)}
     >
-      <div className={`${styles.btn} ${mouseDown && styles.mousedown}`}>
+      <div
+        className={`${styles.btn} ${mouseDown && styles.mousedown}`}
+        style={props.contstyle}
+      >
         <span className={styles.radientcontainer}>
           <span
             className={styles.btnspan}
@@ -121,7 +126,7 @@ export const ButtonWithGradient = (props: Props) => {
             }
           ></span>
         </span>
-        <div className={styles.title}>{props.title}</div>
+        <div className={styles.title}>{props.child}</div>
       </div>
     </div>
   );

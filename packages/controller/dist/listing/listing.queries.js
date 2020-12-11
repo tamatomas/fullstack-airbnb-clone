@@ -3,8 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FIND = exports.SEARCH = void 0;
 const client_1 = require("@apollo/client");
 exports.SEARCH = client_1.gql `
-  query search($city: String, $location: JSONObject, $guests: Float) {
-    search(city: $city, location: $location, guests: $guests) {
+  query search(
+    $city: String
+    $country: String
+    $state: String
+    $guests: Float
+  ) {
+    search(city: $city, state: $state, country: $country, guests: $guests) {
       id
       title
       description

@@ -25,13 +25,18 @@ const useStyles = createUseStyles({
 interface Props {
   label?: string;
   to: string;
+  color?: string;
 }
 
 export const HeaderButton = (props: Props) => {
   const styles = useStyles();
   return (
     <div className={styles.div}>
-      <Link to={props.to} className={styles.link}>
+      <Link
+        to={props.to}
+        className={styles.link}
+        style={{ color: props.color }}
+      >
         {props.label}
       </Link>
     </div>
