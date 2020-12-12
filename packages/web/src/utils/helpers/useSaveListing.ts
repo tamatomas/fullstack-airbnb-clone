@@ -5,7 +5,8 @@ import { useListingStore } from "../store/listingstore";
 
 export const useSaveListing = () => {
   const listing = useListingStore((state) => state.listing);
-  const [save] = useMutation<Partial<Listing>>(listing?.id ? UPDATE : CREATE, {
+
+  const [save] = useMutation(listing?.id ? UPDATE : CREATE, {
     variables: { data: listing },
   });
   return { save, listing };
