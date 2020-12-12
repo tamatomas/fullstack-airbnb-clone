@@ -51,7 +51,10 @@ export const Room = (props: Props) => {
       <Layout style={{ position: "fixed", bottom: 0 }}>
         <NavControlls
           continueLink={"/become-a-host/bedrooms"}
-          listingArgs={{ proptype: propType, dedicated: dedicated }}
+          listingArgs={{
+            proptype: Object(PropertyType)[propType],
+            dedicated: dedicated,
+          }}
         />
       </Layout>
     </React.Fragment>
