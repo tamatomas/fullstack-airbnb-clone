@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { createUseStyles } from "react-jss";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { useSync } from "../../utils/helpers/useSync";
@@ -29,10 +28,7 @@ interface Props extends RouteComponentProps {}
 
 export const ListingSync = withRouter((props: Props) => {
   const styles = useStyles();
-  useEffect(() => {
-    useSync();
-  }, []);
-
+  useSync();
   return (
     <div className={styles.container}>
       <div className={styles.savenexitbtn}>
