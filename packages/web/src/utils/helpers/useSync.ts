@@ -7,7 +7,7 @@ export const useSync = () => {
   const { save, listing } = useSaveListing();
 
   const prevListing = usePrevious(listing);
-
+  console.log("syncing");
   const updateListing = useListingStore((state) => state.updateListing);
   useEffect(() => {
     if (!listing?.id)
@@ -20,7 +20,8 @@ export const useSync = () => {
   }, [listing, save, updateListing]);
 
   useEffect(() => {
-    console.log("debug loop:", listing !== prevListing);
+    console.log("listing: ", listing);
+    console.log("listing: ", prevListing);
     if (listing?.id && listing !== prevListing)
       save()
         .then((data) => {
@@ -28,7 +29,7 @@ export const useSync = () => {
           updateListing(data.data.updateListing!);
         })
         .catch((err) => console.log(err));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [listing]);
+  }, [listing, save, updateListing, prevListing]);
+
   return { save, listing };
 };

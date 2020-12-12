@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { createUseStyles } from "react-jss";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { useSync } from "../../utils/helpers/useSync";
@@ -30,6 +31,7 @@ interface Props extends RouteComponentProps {}
 export const ListingSync = withRouter((props: Props) => {
   const styles = useStyles();
   const { save, listing } = useSync();
+
   const handleSave = () => {
     save()
       .then(() => props.history.push("/"))
