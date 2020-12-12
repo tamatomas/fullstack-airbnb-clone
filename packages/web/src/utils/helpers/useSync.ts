@@ -1,4 +1,3 @@
-import { Listing } from "@airbnb/common";
 import { useEffect } from "react";
 import { useListingStore } from "../store/listingstore";
 import { useSaveListing } from "./useSaveListing";
