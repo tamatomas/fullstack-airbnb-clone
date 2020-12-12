@@ -4,7 +4,6 @@ import { BsHouse } from "react-icons/bs";
 import { createUseStyles } from "react-jss";
 import { FormTitleParam } from "../../utils/consts/FormTitleParam";
 import { ListingSync } from "./ListingSync";
-import { useListingStore } from "../../utils/store/listingstore";
 
 const useStyles = createUseStyles({
   icon: {
@@ -26,7 +25,6 @@ interface Props {
 
 export const ListingHeader = (props: Props) => {
   const styles = useStyles();
-  const listingId = useListingStore((state) => state.listing)?.id;
   const showSync =
     props.routename === "location" ||
     props.routename === "amenities" ||
@@ -37,11 +35,6 @@ export const ListingHeader = (props: Props) => {
       <p className={styles.title}>
         {FormTitleParam.find((i) => i.route === props.routename)?.title}
       </p>
-      {listingId && (
-        <p className={styles.title} style={{ color: "#ababab" }}>
-          {"Listing#" + listingId}
-        </p>
-      )}
       {showSync && <ListingSync />}
     </Header>
   );
