@@ -2,13 +2,7 @@ import React, { useEffect } from "react";
 import { User } from "@airbnb/common";
 import { USER_DATA } from "@airbnb/controller";
 import { useQuery } from "@apollo/client";
-import {
-  Title,
-  Layout,
-  ListingHeader,
-  NavControlls,
-  InputSimple,
-} from "../../components";
+import { Title, Layout, NavControlls, InputSimple } from "../../components";
 import { useListingStore } from "../../utils/store/listingstore";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -42,7 +36,6 @@ export function Description(props: Props) {
   console.log(props);
   return (
     <React.Fragment>
-      <ListingHeader routename={"description"} />
       <Layout formstyle={{ paddingBottom: 100 }}>
         <React.Fragment>
           <Title title={"Describe your place  to guests"} />

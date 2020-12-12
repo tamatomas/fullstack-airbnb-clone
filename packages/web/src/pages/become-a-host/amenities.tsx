@@ -2,14 +2,7 @@ import React, { useEffect, useState } from "react";
 import { User } from "@airbnb/common";
 import { USER_DATA } from "@airbnb/controller";
 import { useQuery } from "@apollo/client";
-import {
-  Title,
-  Layout,
-  ListingHeader,
-  NavControlls,
-  CheckBox,
-  Label,
-} from "../../components";
+import { Title, Layout, NavControlls, CheckBox, Label } from "../../components";
 import { useListingStore } from "../../utils/store/listingstore";
 
 interface Props {}
@@ -31,7 +24,6 @@ export function Amenities(props: Props) {
 
   return (
     <React.Fragment>
-      <ListingHeader routename={"amenities"} />
       <Layout formstyle={{ paddingBottom: 100 }}>
         <React.Fragment>
           <Title title={"What amenities do you offer?"} />

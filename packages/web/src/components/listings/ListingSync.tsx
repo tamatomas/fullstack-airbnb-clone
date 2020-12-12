@@ -1,5 +1,3 @@
-import React from "react";
-import { useEffect } from "react";
 import { createUseStyles } from "react-jss";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { useSync } from "../../utils/helpers/useSync";

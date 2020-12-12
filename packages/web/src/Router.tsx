@@ -15,6 +15,7 @@ import { Listings } from "./pages/hosting/listings";
 import { NavBar } from "./components/NavBar";
 import { Search } from "./pages/search/search";
 import { ListingView } from "./pages/search/listing";
+import { ListingHeader } from "./components";
 
 export const Router = () => {
   return (
@@ -27,18 +28,23 @@ export const Router = () => {
           <Hosting />
         </Route>
         <Route path={"/become-a-host/room"}>
+          <ListingHeader routename={"room"} />
           <Room />
         </Route>
         <Route path={"/become-a-host/bedrooms"}>
+          <ListingHeader routename={"bedrooms"} />
           <Bedrooms />
         </Route>
         <Route path={"/become-a-host/description"}>
+          <ListingHeader routename={"description"} />
           <Description />
         </Route>
         <Route path={"/become-a-host/location"}>
+          <ListingHeader routename={"location"} />
           <Location />
         </Route>
         <Route path={"/become-a-host/amenities"}>
+          <ListingHeader routename={"amenities"} />
           <Amenities />
         </Route>
         <Route path={"/become-a-host/:id"}>

@@ -5,7 +5,6 @@ import { useQuery } from "@apollo/client";
 import {
   Title,
   Layout,
-  ListingHeader,
   NavControlls,
   Label,
   InlineCounter,
@@ -29,7 +28,6 @@ export function Bedrooms(props: Props) {
   );
   return (
     <React.Fragment>
-      <ListingHeader routename={"bedrooms"} />
       <Layout formstyle={{ paddingBottom: 100 }}>
         <React.Fragment>
           <Title title={"How many guests can your place accommodate?"} />

@@ -5,7 +5,6 @@ import { useQuery } from "@apollo/client";
 import {
   Title,
   Layout,
-  ListingHeader,
   Select,
   NavControlls,
   RadioButton,
@@ -25,7 +24,6 @@ export const Room = (props: Props) => {
 
   return (
     <React.Fragment>
-      <ListingHeader routename={"room"} />
       <Layout>
         <React.Fragment>
           <Title title={"What kind of place are you listing?"} />

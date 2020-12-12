@@ -5,7 +5,6 @@ import { useQuery } from "@apollo/client";
 import {
   Title,
   Layout,
-  ListingHeader,
   NavControlls,
   Label,
   InputSimple,
@@ -61,7 +60,6 @@ export function Location(props: Props) {
 
   return (
     <React.Fragment>
-      <ListingHeader routename={"bedrooms"} />
       <Layout formstyle={{ paddingBottom: 100 }}>
         <React.Fragment>
           <Title title={"Where’s your place located?"} />
