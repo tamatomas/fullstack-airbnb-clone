@@ -1,8 +1,17 @@
-import { Arg, Ctx, Int, Mutation, Query, Resolver } from "type-graphql";
+import {
+  Arg,
+  Ctx,
+  Int,
+  Mutation,
+  Query,
+  Resolver,
+  UseMiddleware,
+} from "type-graphql";
 import { DI } from "../../main";
 import { Listing, User } from "../../entity";
 import { ListingInput } from "./args/ListingInput";
 import { Context } from "../../types/Context";
+import { isAuth } from "../common";
 
 @Resolver()
 export class ListingResolver {
@@ -32,6 +41,7 @@ export class ListingResolver {
     return list;
   }
 
+  @UseMiddleware(isAuth)
   @Mutation(() => Listing)
   async createListing(
     @Arg("data") { kind, location, nguests }: ListingInput,
@@ -39,7 +49,7 @@ export class ListingResolver {
   ): Promise<Listing> {
     const list = new Listing();
     const user = await DI.em.findOne(User, {
-      id: parseInt(ctx.req.session.id),
+      id: parseInt(ctx.req.session.userId! + ""),
     });
 
     if (!user) throw new Error("user not founded");
@@ -58,6 +68,7 @@ export class ListingResolver {
     return list;
   }
 
+  @UseMiddleware(isAuth)
   @Mutation(() => Listing)
   async updateListing(
     @Arg("data") updateListingData: ListingInput
@@ -86,6 +97,7 @@ export class ListingResolver {
     return list;
   }
 
+  @UseMiddleware(isAuth)
   @Mutation(() => Boolean)
   async deleteListing(@Arg("id", () => Int) id: number): Promise<Boolean> {
     const list = await DI.em.findOne(Listing, { id });
