@@ -1,4 +1,3 @@
-import { Listing } from "@airbnb/common";
 import { CREATE, UPDATE } from "@airbnb/controller";
 import { useMutation } from "@apollo/client";
 import { useListingStore } from "../store/listingstore";
