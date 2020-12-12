@@ -28,6 +28,7 @@ export const useSync = () => {
           updateListing(data.data.updateListing!);
         })
         .catch((err) => console.log(err));
-  }, [listing, save, updateListing, prevListing]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [listing]);
   return { save, listing };
 };
