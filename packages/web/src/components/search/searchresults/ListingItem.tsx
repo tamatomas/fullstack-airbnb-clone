@@ -103,7 +103,11 @@ export const ListingItem = (props: Props) => {
           </p>
           <p className={styles.smalldata}>
             {props.listing?.amenities &&
-              [4].map((_, i) => props.listing?.amenities[i] + " · ")}
+              // eslint-disable-next-line array-callback-return
+              [4].map((_, i) => {
+                if (props.listing?.amenities)
+                  return props.listing?.amenities[i] + " · ";
+              })}
           </p>
         </div>
       </Link>

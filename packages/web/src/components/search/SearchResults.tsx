@@ -1,5 +1,4 @@
 import { Listing } from "@airbnb/common";
-import { useState } from "react";
 import { createUseStyles } from "react-jss";
 import { ListingItem } from "./searchresults/ListingItem";
 
@@ -33,11 +32,11 @@ const useStyles = createUseStyles({
 
 interface Props {
   listings?: Listing[];
+  setListing: (id: string) => void;
 }
 
 export const SearchResults = (props: Props) => {
   const styles = useStyles();
-  const [hoveredListing, setListing] = useState<Partial<Listing>>({});
   return (
     <div className={styles.listcontainer}>
       <p className={styles.subtitle}>{props.listings?.length} stays</p>
@@ -46,10 +45,7 @@ export const SearchResults = (props: Props) => {
       </p>
       {props.listings &&
         props.listings.map((listing) => (
-          <ListingItem
-            listing={listing}
-            setCurrentListing={(id: string) => setListing({ id })}
-          />
+          <ListingItem listing={listing} setCurrentListing={props.setListing} />
         ))}
     </div>
   );

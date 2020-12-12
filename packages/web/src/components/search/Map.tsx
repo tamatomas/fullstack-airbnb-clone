@@ -1,5 +1,6 @@
 import { createUseStyles } from "react-jss";
 import GoogleMapReact from "google-map-react";
+import { Listing } from "@airbnb/common";
 
 const useStyles = createUseStyles({
   mapcontainer: {
@@ -8,7 +9,10 @@ const useStyles = createUseStyles({
   },
 });
 
-interface Props {}
+interface Props {
+  listings: Partial<Listing>[] | undefined;
+  listing: Partial<Listing>;
+}
 
 const center = {
   lat: 59.95,

@@ -1,4 +1,4 @@
-import { Link, RouteComponentProps, withRouter } from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import { createUseStyles } from "react-jss";
 import { AmenityList } from "../../utils/consts/Amenities";
 import { Fragment, ReactNode } from "react";

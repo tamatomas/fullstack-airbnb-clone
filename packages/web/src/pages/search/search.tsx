@@ -1,6 +1,6 @@
 import { SEARCH } from "@airbnb/controller";
 import { useQuery } from "@apollo/client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Map } from "../../components/search/Map";
 import { SearchResults } from "../../components/search/SearchResults";
 import { useSearchStore } from "../../utils/store/searchstore";
@@ -21,6 +21,7 @@ interface Props {}
 
 export const Search = (props: Props) => {
   const styles = useStyles();
+  const [hoveredListing, setListing] = useState<Partial<Listing>>({});
   const listing = useSearchStore((state) => state.searchArgs);
   const { data, refetch } = useQuery<{ search: Listing[] }>(SEARCH, {
     variables: { listing },
@@ -30,8 +31,11 @@ export const Search = (props: Props) => {
   }, [listing, refetch]);
   return (
     <div className={styles.container}>
-      <SearchResults listings={data?.search} />
-      <Map />
+      <SearchResults
+        listings={data?.search}
+        setListing={(id: string) => setListing({ id })}
+      />
+      <Map listing={hoveredListing} listings={data?.search} />
     </div>
   );
 };

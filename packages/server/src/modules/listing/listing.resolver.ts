@@ -1,8 +1,7 @@
 import { Arg, Int, Mutation, Query, Resolver } from "type-graphql";
 import { DI } from "../../main";
-import { Listing, Coords, User } from "../../entity";
+import { Listing, User } from "../../entity";
 import { ListingInput } from "./args/ListingInput";
-import { GraphQLJSONObject } from "graphql-type-json";
 
 @Resolver()
 export class ListingResolver {

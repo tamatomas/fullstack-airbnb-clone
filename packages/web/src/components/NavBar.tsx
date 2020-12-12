@@ -57,14 +57,14 @@ export const NavBar = (props: Props) => {
   const styles = useStyles();
   const [fixed, setFixed] = useState(props.fixed);
   const { data } = useQuery<{ data: User }>(USER_DATA);
-  const scroll = () => {
-    if (window.scrollY > 0) setFixed(true);
-    else if (!props.fixed) setFixed(false);
-  };
   useIsAuth();
   useEffect(() => {
+    const scroll = () => {
+      if (window.scrollY > 0) setFixed(true);
+      else if (!props.fixed) setFixed(false);
+    };
     window.addEventListener("scroll", scroll);
-  }, []);
+  }, [props.fixed]);
   return (
     <div className={`${styles.navbar} ${fixed ? styles.fixednavbar : ""}`}>
       <div className={styles.icon}>
