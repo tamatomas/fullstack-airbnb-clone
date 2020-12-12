@@ -20,6 +20,7 @@ export const useSync = () => {
   }, [listing, save, updateListing]);
 
   useEffect(() => {
+    console.log("debug loop:", listing !== prevListing);
     if (listing?.id && listing !== prevListing)
       save()
         .then((data) => {
