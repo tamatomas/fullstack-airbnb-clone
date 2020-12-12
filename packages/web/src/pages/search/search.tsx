@@ -24,7 +24,7 @@ export const Search = (props: Props) => {
   const [hoveredListing, setListing] = useState<Partial<Listing>>({});
   const listing = useSearchStore((state) => state.searchArgs);
   const { data, refetch } = useQuery<{ search: Listing[] }>(SEARCH, {
-    variables: { listing },
+    variables: { ...listing },
   });
   useEffect(() => {
     refetch();

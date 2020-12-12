@@ -11,13 +11,13 @@ export class ListingResolver {
     @Arg("city") city?: string,
     @Arg("country") country?: string,
     @Arg("state") state?: string,
-    @Arg("guests") guests?: number
+    @Arg("nguests") nguests?: number
   ): Promise<Listing[]> {
     const list = await DI.em.find(Listing, {
       city,
       country,
       state,
-      nguests: guests,
+      nguests,
     });
 
     return list;

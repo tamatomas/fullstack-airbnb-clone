@@ -7,9 +7,9 @@ exports.SEARCH = client_1.gql `
     $city: String
     $country: String
     $state: String
-    $guests: Float
+    $nguests: Float
   ) {
-    search(city: $city, state: $state, country: $country, guests: $guests) {
+    search(city: $city, state: $state, country: $country, nguests: $nguests) {
       id
       title
       description
