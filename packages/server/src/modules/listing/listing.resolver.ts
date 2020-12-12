@@ -71,7 +71,7 @@ export class ListingResolver {
     });
 
     if (!user) throw new Error("user not founded");
-
+    list.owner = user;
     await DI.em.persist(list).flush();
 
     if (!user.listings.isInitialized()) {
