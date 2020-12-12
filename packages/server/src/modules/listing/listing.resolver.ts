@@ -1,7 +1,8 @@
-import { Arg, Int, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, Ctx, Int, Mutation, Query, Resolver } from "type-graphql";
 import { DI } from "../../main";
 import { Listing, User } from "../../entity";
 import { ListingInput } from "./args/ListingInput";
+import { Context } from "../../types/Context";
 
 @Resolver()
 export class ListingResolver {
@@ -33,10 +34,13 @@ export class ListingResolver {
 
   @Mutation(() => Listing)
   async createListing(
-    @Arg("data") { kind, location, nguests, ownerid }: ListingInput
+    @Arg("data") { kind, location, nguests }: ListingInput,
+    @Ctx() ctx: Context
   ): Promise<Listing> {
     const list = new Listing();
-    const user = await DI.em.findOne(User, { id: ownerid });
+    const user = await DI.em.findOne(User, {
+      id: parseInt(ctx.req.session.id),
+    });
 
     if (!user) throw new Error("user not founded");
 
