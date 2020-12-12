@@ -8,7 +8,10 @@ export const useSync = () => {
   useEffect(() => {
     if (!listing?.id)
       save()
-        .then((data) => updateListing(data.data.createListing!))
+        .then((data) => {
+          console.log(data.data);
+          updateListing(data.data.createListing!);
+        })
         .catch((err) => console.log(err));
   }, [listing, save, updateListing]);
 
