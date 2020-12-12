@@ -44,20 +44,34 @@ export class ListingResolver {
   @UseMiddleware(isAuth)
   @Mutation(() => Listing)
   async createListing(
-    @Arg("data") { kind, location, nguests }: ListingInput,
+    @Arg("data") data: ListingInput,
     @Ctx() ctx: Context
   ): Promise<Listing> {
     const list = new Listing();
+
+    list.bedrooms = data.bedrooms;
+    list.amenities = data.amenities;
+    list.city = data.city;
+    list.country = data.country;
+    list.currency = data.currency;
+    list.dedicated = data.dedicated;
+    list.description = data.description;
+    list.kind = data.kind;
+    list.location = data.location;
+    list.nguests = data.nguests;
+    list.price = data.price;
+    list.proptype = data.proptype;
+    list.state = data.state;
+    list.street = data.street;
+    list.title = data.title;
+    list.zip = data.zip;
+
     const user = await DI.em.findOne(User, {
       id: parseInt(ctx.req.session.userId! + ""),
     });
 
     if (!user) throw new Error("user not founded");
 
-    list.owner = user;
-    list.kind = kind;
-    list.location = location;
-    list.nguests = nguests;
     await DI.em.persist(list).flush();
 
     if (!user.listings.isInitialized()) {
