@@ -68,11 +68,11 @@ export const LocationInput = (props: Props) => {
   };
 
   const handleSelect = (address: any) => {
-    geocodeByAddress(address).then((results) => {
+    geocodeByAddress(address).then(async (results) => {
       setAddress(results[0].formatted_address);
       props.onChange({
         ...props.listing,
-        ...getListingLocationFromGResults(results[0]),
+        ...(await getListingLocationFromGResults(results[0])),
       });
     });
   };

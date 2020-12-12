@@ -88,7 +88,7 @@ export class Listing {
   @Property({ nullable: true })
   zip?: string;
 
-  @Field(() => GraphQLJSONObject)
+  @Field(() => GraphQLJSONObject, { nullable: true })
   @Property({ type: JsonType, nullable: true })
   location?: Coords;
 

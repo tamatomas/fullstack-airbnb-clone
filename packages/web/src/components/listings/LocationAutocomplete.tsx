@@ -50,9 +50,9 @@ export const LocationAutoComplete = () => {
   };
 
   const handleSelect = (address: any) => {
-    geocodeByAddress(address).then((results) => {
+    geocodeByAddress(address).then(async (results) => {
       setAddress(results[0].formatted_address);
-      updateListing(getListingLocationFromGResults(results[0]));
+      updateListing(await getListingLocationFromGResults(results[0]));
     });
   };
   return (

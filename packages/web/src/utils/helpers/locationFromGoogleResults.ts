@@ -1,7 +1,7 @@
 import { Listing } from "@airbnb/common";
 import { getLatLng } from "react-places-autocomplete";
 
-export const getListingLocationFromGResults = (
+export const getListingLocationFromGResults = async (
   result: google.maps.GeocoderResult
 ) => {
   let newlisting: Partial<Listing> = {};
@@ -16,7 +16,7 @@ export const getListingLocationFromGResults = (
     if (components.types.find((type) => type === "administrative_area_level_1"))
       newlisting!.state = components.long_name;
   });
-  getLatLng(result).then((res) => {
+  await getLatLng(result).then((res) => {
     newlisting!.location = { lat: res.lat, lon: res.lng };
   });
 
