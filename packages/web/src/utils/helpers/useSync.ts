@@ -1,3 +1,4 @@
+import { Listing } from "@airbnb/common";
 import { useEffect } from "react";
 import { useListingStore } from "../store/listingstore";
 import { useSaveListing } from "./useSaveListing";
@@ -9,7 +10,7 @@ export const useSync = () => {
     if (!listing?.id)
       save()
         .then((data) => {
-          console.log(data.data);
+          delete data.data.createListing!.__typename;
           updateListing(data.data.createListing!);
         })
         .catch((err) => console.log(err));
@@ -18,7 +19,10 @@ export const useSync = () => {
   useEffect(() => {
     if (listing?.id)
       save()
-        .then((data) => updateListing(data.data.updateListing!))
+        .then((data) => {
+          delete data.data.updateListing!.__typename;
+          updateListing(data.data.updateListing!);
+        })
         .catch((err) => console.log(err));
   }, [listing, save, updateListing]);
   return { save, listing };
