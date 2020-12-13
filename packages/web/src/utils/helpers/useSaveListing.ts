@@ -13,8 +13,10 @@ export const useSaveListing = () => {
   const save = (callback?: () => void) => {
     saveListing().then((data) => {
       if (!listing?.id) {
+        delete data.data?.createListing.__typename;
         updateListing(data.data.createListing);
       } else {
+        delete data.data?.updateListing.__typename;
         updateListing(data.data.updateListing);
       }
       if (callback) callback();
