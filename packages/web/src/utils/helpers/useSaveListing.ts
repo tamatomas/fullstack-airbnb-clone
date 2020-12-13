@@ -4,9 +4,21 @@ import { useListingStore } from "../store/listingstore";
 
 export const useSaveListing = () => {
   const listing = useListingStore((state) => state.listing);
+  const updateListing = useListingStore((state) => state.updateListing);
 
-  const [save] = useMutation(listing?.id ? UPDATE : CREATE, {
+  const [save, data] = useMutation(listing?.id ? UPDATE : CREATE, {
     variables: { data: listing },
   });
-  return { save, listing };
+
+  const saveListing = () => {
+    save().then(() => {
+      if (!listing?.id) {
+        updateListing(data.data.createListing);
+      } else {
+        updateListing(data.data.updateListing);
+      }
+    });
+  };
+
+  return { saveListing, listing };
 };
