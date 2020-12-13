@@ -11,15 +11,15 @@ interface Props extends RouteComponentProps {}
 export const ViewListing = withRouter((props: Props) => {
   useQuery<{ data: User }>(USER_DATA);
   const { id } = useParams<{ id: string }>();
-  const { data } = useQuery<{ data: Listing }>(FIND, {
+  const { data } = useQuery<{ find: Listing }>(FIND, {
     variables: { id: parseInt(id) },
   });
 
   const setListing = useListingStore((state) => state.setListing);
 
   const handleClick = (to: string) => {
-    setListing(data?.data!);
-    props.history.push(to + data?.data.id);
+    setListing(data?.find!);
+    props.history.push(to + data?.find.id);
   };
 
   return (
@@ -34,43 +34,43 @@ export const ViewListing = withRouter((props: Props) => {
           <CompletionIndicator
             label={"Room"}
             completed={
-              !!data?.data.proptype &&
-              data?.data.dedicated !== null &&
-              data?.data.dedicated !== undefined
+              !!data?.find.proptype &&
+              data?.find.dedicated !== null &&
+              data?.find.dedicated !== undefined
             }
             onClick={() => handleClick("/become-a-host/room/")}
           />
           <CompletionIndicator
             label={"Bedrooms"}
             completed={
-              !!data?.data.nguests && !!data?.data.bedrooms && !!data?.data.beds
+              !!data?.find.nguests && !!data?.find.bedrooms && !!data?.find.beds
             }
             onClick={() => handleClick("/become-a-host/bedrooms/")}
           />
           <CompletionIndicator
             label={"Location"}
             completed={
-              !!data?.data.country &&
-              !!data?.data.street &&
-              !!data?.data.city &&
-              !!data?.data.state &&
-              !!data?.data.zip
+              !!data?.find.country &&
+              !!data?.find.street &&
+              !!data?.find.city &&
+              !!data?.find.state &&
+              !!data?.find.zip
             }
             onClick={() => handleClick("/become-a-host/location/")}
           />
           <CompletionIndicator
             label={"Amenities"}
             completed={
-              !!data?.data.amenities && data?.data.amenities?.length > 1
+              !!data?.find.amenities && data?.find.amenities?.length > 1
             }
             onClick={() => handleClick("/become-a-host/amenities/")}
           />
           <CompletionIndicator
             label={"Description"}
             completed={
-              !!data?.data.title &&
-              !!data?.data.description &&
-              !!data?.data.price
+              !!data?.find.title &&
+              !!data?.find.description &&
+              !!data?.find.price
             }
             onClick={() => handleClick("/become-a-host/description/")}
           />
