@@ -47,7 +47,7 @@ interface Props extends RouteComponentProps {
 
 export const NavControlls = withRouter((props: Props) => {
   const styles = useStyles();
-  const { save } = useSaveListing();
+  const { save, listing } = useSaveListing();
   const updateListing = useListingStore((state) => state.updateListing);
   const handleContinue = () => {
     if (props.listingArgs) updateListing(props.listingArgs);
@@ -83,9 +83,7 @@ export const NavControlls = withRouter((props: Props) => {
         <Button
           style={{ marginLeft: "auto" }}
           onClick={() =>
-            save().then((data) =>
-              props.history.push("/become-a-host/" + data.data?.id)
-            )
+            save(() => props.history.push("/become-a-host/" + listing?.id))
           }
           title={"Finish"}
         />

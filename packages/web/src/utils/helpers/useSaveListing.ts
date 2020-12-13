@@ -10,13 +10,14 @@ export const useSaveListing = () => {
     variables: { data: listing },
   });
 
-  const save = () => {
+  const save = (callback?: () => void) => {
     saveListing().then(() => {
       if (!listing?.id) {
         updateListing(data.data.createListing);
       } else {
         updateListing(data.data.updateListing);
       }
+      if (callback) callback();
     });
   };
 
