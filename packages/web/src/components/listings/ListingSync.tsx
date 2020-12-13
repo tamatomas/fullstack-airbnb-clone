@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { useSync } from "../../utils/helpers/useSync";
+import { useSaveListing } from "../../utils/helpers/useSaveListing";
 
 const useStyles = createUseStyles({
   container: {
@@ -28,10 +28,18 @@ interface Props extends RouteComponentProps {}
 
 export const ListingSync = withRouter((props: Props) => {
   const styles = useStyles();
-  useSync();
+  const { save, listing } = useSaveListing();
+
+  const handleSave = () => {
+    save()
+      .then(() => props.history.push("/"))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.savenexitbtn}>
+      {listing?.id && <p className={styles.savelabel}>{"Saved"}</p>}
+      <div className={styles.savenexitbtn} onClick={() => handleSave()}>
         <p className={styles.savenexit}>Save and exit</p>
       </div>
     </div>

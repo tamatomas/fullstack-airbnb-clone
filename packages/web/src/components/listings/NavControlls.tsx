@@ -47,12 +47,19 @@ interface Props extends RouteComponentProps {
 
 export const NavControlls = withRouter((props: Props) => {
   const styles = useStyles();
+  const { save } = useSaveListing();
   const updateListing = useListingStore((state) => state.updateListing);
   const handleContinue = () => {
     if (props.listingArgs) updateListing(props.listingArgs);
     if (props.getValues) updateListing(props.getValues());
+    if (
+      props.location.pathname.includes("location") ||
+      props.location.pathname.includes("amenities") ||
+      props.location.pathname.includes("description")
+    ) {
+      save();
+    }
   };
-  const { save } = useSaveListing();
   return (
     <div className={styles.container}>
       {props.backLink && (
