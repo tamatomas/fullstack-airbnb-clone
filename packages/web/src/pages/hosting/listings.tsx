@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createUseStyles } from "react-jss";
-import { Listing } from "@airbnb/common";
+import { Listing, User } from "@airbnb/common";
 import { USER_LISTINGS } from "@airbnb/controller";
 import { useQuery } from "@apollo/client";
 import { Button } from "../../components/Button";
@@ -77,7 +77,7 @@ interface itemProps extends Partial<Listing> {
 
 export const Listings = (props: Props) => {
   const styles = useStyles();
-  const { data } = useQuery<{ data: Listing[] }>(USER_LISTINGS);
+  const { data } = useQuery<{ data: User }>(USER_LISTINGS);
   return (
     <React.Fragment>
       <HostingHeader />
@@ -105,7 +105,7 @@ export const Listings = (props: Props) => {
               </div>
             </th>
           </tr>
-          {data?.data.map((listing) => (
+          {data?.data.listings.map((listing) => (
             <ListingItem
               {...listing}
               finished={Object.entries(listing)
