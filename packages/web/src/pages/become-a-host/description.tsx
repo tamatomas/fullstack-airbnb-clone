@@ -92,7 +92,7 @@ export function Description(props: Props) {
       <Layout style={{ position: "fixed", bottom: 0 }}>
         <NavControlls
           backLink={"/become-a-host/amenities"}
-          listingArgs={{ ...getValues() }}
+          getValues={getValues}
           last
         />
       </Layout>
