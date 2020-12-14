@@ -80,6 +80,7 @@ export const LocationInput = (props: Props) => {
       value={address}
       onChange={handleChange}
       onSelect={handleSelect}
+      searchOptions={{ types: ["(cities)"] }}
     >
       {({ getInputProps, suggestions, getSuggestionItemProps }) => (
         <SearchBarBtn
