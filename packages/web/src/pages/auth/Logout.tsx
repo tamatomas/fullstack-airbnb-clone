@@ -14,11 +14,13 @@ export const Logout = (props: Props) => {
   useEffect(() => {
     logout()
       .then(() => {
-        setAuth(false);
         setRedirect(true);
       })
       .catch(() => console.log("failed to log out"));
   }, [logout, setAuth]);
-  if (redirect) return <Redirect to="/" />;
+  if (redirect) {
+    setAuth(false);
+    return <Redirect to="/" />;
+  }
   return <div></div>;
 };
