@@ -95,7 +95,7 @@ export class ListingResolver {
     const list = await DI.em.findOne(Listing, { id: updateListingData.id });
     if (!list) throw new Error("Listing not founded");
     list.bedrooms = updateListingData.bedrooms;
-    list.beds = data.beds;
+    list.beds = updateListingData.beds;
     list.amenities = updateListingData.amenities;
     list.city = updateListingData.city;
     list.country = updateListingData.country;
