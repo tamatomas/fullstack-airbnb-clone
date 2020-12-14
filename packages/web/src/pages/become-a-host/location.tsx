@@ -55,6 +55,7 @@ export function Location(props: Props) {
     if (listing?.country) setValue("country", listing?.country);
     if (listing?.state) setValue("state", listing?.state);
     if (listing?.street) setValue("street", listing?.street);
+    console.log("setting zip value as: ", listing?.zip);
     if (listing?.zip) setValue("zip", listing?.zip);
   }, [listing, setValue]);
 
