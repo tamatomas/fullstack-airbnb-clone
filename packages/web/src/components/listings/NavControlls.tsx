@@ -48,15 +48,10 @@ export const NavControlls = withRouter((props: Props) => {
   const styles = useStyles();
   const { save, listing } = useSaveListing();
   const handleContinue = () => {
-    if (
-      props.location.pathname.includes("location") ||
-      props.location.pathname.includes("amenities") ||
-      props.location.pathname.includes("description")
-    ) {
-      if (props.listingArgs) save({ listingargs: props.listingArgs });
-      if (props.getValues) {
-        save({ listingargs: props.getValues() });
-      }
+    if (props.listingArgs)
+      save({ listingargs: { ...listing, ...props.listingArgs } });
+    if (props.getValues) {
+      save({ listingargs: { ...listing, ...props.getValues() } });
     }
   };
   return (

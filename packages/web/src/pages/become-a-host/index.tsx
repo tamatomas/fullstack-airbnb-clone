@@ -51,7 +51,6 @@ export const BecomeAHost = (props: Props) => {
   const updateListing = useListingStore((state) => state.updateListing);
 
   const handleContinue = () => {
-    console.log("saved data");
     updateListing({
       nguests: guests,
       kind: Object(KindOfPlaceEnum)[placeType],
