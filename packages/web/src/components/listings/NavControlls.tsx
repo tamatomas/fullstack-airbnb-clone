@@ -48,10 +48,22 @@ export const NavControlls = withRouter((props: Props) => {
   const styles = useStyles();
   const { save, listing } = useSaveListing();
   const handleContinue = () => {
-    if (props.listingArgs)
-      save({ listingargs: { ...listing, ...props.listingArgs } });
-    if (props.getValues) {
-      save({ listingargs: { ...listing, ...props.getValues() } });
+    if (props.listingArgs && props.continueLink)
+      save({
+        callback: () => props.history.push(props.continueLink!),
+        listingargs: { ...listing, ...props.listingArgs },
+      });
+    if (props.getValues && props.continueLink) {
+      save({
+        callback: () => props.history.push(props.continueLink!),
+        listingargs: { ...listing, ...props.getValues() },
+      });
+    }
+    if (props.last) {
+      save({
+        callback: () => props.history.push("/become-a-host/" + listing?.id),
+        listingargs: { ...listing, ...props.getValues!() },
+      });
     }
   };
   return (
@@ -64,25 +76,11 @@ export const NavControlls = withRouter((props: Props) => {
           </div>
         </Link>
       )}
-      {props.continueLink && (
-        <Link
-          to={props.continueLink}
-          style={{ textDecoration: "none" }}
-          className={styles.continuebtn}
-        >
-          <Button onClick={() => handleContinue()} title={"Continue"} />
-        </Link>
-      )}
-      {props.last && (
+      {(props.last || props.continueLink) && (
         <Button
           style={{ marginLeft: "auto" }}
-          onClick={() =>
-            save({
-              callback: () =>
-                props.history.push("/become-a-host/" + listing?.id),
-            })
-          }
-          title={"Finish"}
+          onClick={() => handleContinue()}
+          title={props.last ? "Finish" : "Continue"}
         />
       )}
     </div>
