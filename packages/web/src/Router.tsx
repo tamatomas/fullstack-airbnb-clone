@@ -16,43 +16,46 @@ import { NavBar } from "./components/NavBar";
 import { Search } from "./pages/search/search";
 import { ListingView } from "./pages/search/listing";
 import { ListingHeader } from "./components";
+import { PrivateRoute } from "../src/components/PrivateRoute";
 
 export const Router = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path={"/hosting/listings"}>
+        <PrivateRoute path={"/hosting/listings"}>
           <Listings />
-        </Route>
-        <Route path={"/hosting"} exact>
+        </PrivateRoute>
+        <PrivateRoute path={"/hosting"} exact>
           <Hosting />
-        </Route>
-        <Route path={"/become-a-host/room"}>
-          <ListingHeader routename={"room"} />
-          <Room />
-        </Route>
-        <Route path={"/become-a-host/bedrooms"}>
-          <ListingHeader routename={"bedrooms"} />
-          <Bedrooms />
-        </Route>
-        <Route path={"/become-a-host/description"}>
-          <ListingHeader routename={"description"} />
-          <Description />
-        </Route>
-        <Route path={"/become-a-host/location"}>
-          <ListingHeader routename={"location"} />
-          <Location />
-        </Route>
-        <Route path={"/become-a-host/amenities"}>
-          <ListingHeader routename={"amenities"} />
-          <Amenities />
-        </Route>
-        <Route path={"/become-a-host/:id"}>
-          <ViewListing />
-        </Route>
-        <Route path={"/become-a-host"} exact>
-          <BecomeAHost />
-        </Route>
+        </PrivateRoute>
+        <PrivateRoute path={"/become-a-host"}>
+          <Route path={"/become-a-host/room"}>
+            <ListingHeader routename={"room"} />
+            <Room />
+          </Route>
+          <Route path={"/become-a-host/bedrooms"}>
+            <ListingHeader routename={"bedrooms"} />
+            <Bedrooms />
+          </Route>
+          <Route path={"/become-a-host/description"}>
+            <ListingHeader routename={"description"} />
+            <Description />
+          </Route>
+          <Route path={"/become-a-host/location"}>
+            <ListingHeader routename={"location"} />
+            <Location />
+          </Route>
+          <Route path={"/become-a-host/amenities"}>
+            <ListingHeader routename={"amenities"} />
+            <Amenities />
+          </Route>
+          <Route path={"/become-a-host/:id"}>
+            <ViewListing />
+          </Route>
+          <Route path={"/become-a-host"} exact>
+            <BecomeAHost />
+          </Route>
+        </PrivateRoute>
         <Route path={"/confirmuser/:token"}>
           <ConfirmUser />
         </Route>
