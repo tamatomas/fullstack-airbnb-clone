@@ -60,6 +60,7 @@ export const LocationAutoComplete = () => {
       value={address}
       onChange={handleChange}
       onSelect={handleSelect}
+      searchOptions={{ types: ["(cities)"] }}
     >
       {({ getInputProps, suggestions, getSuggestionItemProps }) => (
         <div>

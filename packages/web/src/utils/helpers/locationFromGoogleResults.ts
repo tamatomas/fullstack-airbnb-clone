@@ -7,8 +7,6 @@ export const getListingLocationFromGResults = async (
   let newlisting: Partial<Listing> = {};
 
   result.address_components.forEach((components) => {
-    if (components.types.find((type) => type === "route" || type === "street"))
-      newlisting!.street = components.long_name;
     if (components.types.find((type) => type === "locality"))
       newlisting!.city = components.long_name;
     if (components.types.find((type) => type === "country"))
