@@ -17,10 +17,10 @@ import { isAuth } from "../common";
 export class ListingResolver {
   @Query(() => [Listing])
   async search(
-    @Arg("city") city?: string,
-    @Arg("country") country?: string,
-    @Arg("state") state?: string,
-    @Arg("nguests") nguests?: number
+    @Arg("city", { nullable: true }) city?: string,
+    @Arg("country", { nullable: true }) country?: string,
+    @Arg("state", { nullable: true }) state?: string,
+    @Arg("nguests", { nullable: true }) nguests?: number
   ): Promise<Listing[]> {
     const list = await DI.em.find(Listing, {
       city,
