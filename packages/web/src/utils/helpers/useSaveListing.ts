@@ -6,12 +6,12 @@ export const useSaveListing = () => {
   const listing = useListingStore((state) => state.listing);
   const updateListing = useListingStore((state) => state.updateListing);
 
-  const [saveListing] = useMutation(listing?.id ? UPDATE : CREATE, {
-    variables: { data: listing },
-  });
+  const [saveListing] = useMutation(listing?.id ? UPDATE : CREATE);
   const save = (callback?: () => void) => {
     console.log("saving listing: ", listing);
-    saveListing().then((data) => {
+    saveListing({
+      variables: { data: listing },
+    }).then((data) => {
       if (!listing?.id) {
         delete data.data?.createListing.__typename;
         updateListing(data.data.createListing);
