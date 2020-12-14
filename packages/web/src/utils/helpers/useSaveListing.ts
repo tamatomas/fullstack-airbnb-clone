@@ -9,8 +9,8 @@ export const useSaveListing = () => {
   const [saveListing] = useMutation(listing?.id ? UPDATE : CREATE, {
     variables: { data: listing },
   });
-
   const save = (callback?: () => void) => {
+    console.log("saving listing: ", listing);
     saveListing().then((data) => {
       if (!listing?.id) {
         delete data.data?.createListing.__typename;

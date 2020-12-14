@@ -51,7 +51,11 @@ export const NavControlls = withRouter((props: Props) => {
   const updateListing = useListingStore((state) => state.updateListing);
   const handleContinue = () => {
     if (props.listingArgs) updateListing(props.listingArgs);
-    if (props.getValues) updateListing(props.getValues());
+    if (props.getValues) {
+      let listingvalues = props.getValues();
+      console.log("listing get values: ", listingvalues);
+      updateListing(listingvalues);
+    }
     if (
       props.location.pathname.includes("location") ||
       props.location.pathname.includes("amenities") ||
