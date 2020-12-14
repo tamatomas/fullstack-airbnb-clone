@@ -31,7 +31,7 @@ export const ListingSync = withRouter((props: Props) => {
   const { save, listing } = useSaveListing();
 
   const handleSave = () => {
-    save(() => props.history.push("/"));
+    save({ callback: () => props.history.push("/") });
   };
 
   return (

@@ -4,7 +4,6 @@ import React from "react";
 import { createUseStyles } from "react-jss";
 import { IoIosArrowBack } from "react-icons/io";
 import { Listing } from "@airbnb/common";
-import { useListingStore } from "../../utils/store/listingstore";
 import { useSaveListing } from "../../utils/helpers/useSaveListing";
 
 const useStyles = createUseStyles({
@@ -48,20 +47,16 @@ interface Props extends RouteComponentProps {
 export const NavControlls = withRouter((props: Props) => {
   const styles = useStyles();
   const { save, listing } = useSaveListing();
-  const updateListing = useListingStore((state) => state.updateListing);
   const handleContinue = () => {
-    if (props.listingArgs) updateListing(props.listingArgs);
-    if (props.getValues) {
-      let listingvalues = props.getValues();
-      console.log("listing get values: ", listingvalues);
-      updateListing(listingvalues);
-    }
     if (
       props.location.pathname.includes("location") ||
       props.location.pathname.includes("amenities") ||
       props.location.pathname.includes("description")
     ) {
-      save();
+      if (props.listingArgs) save({ listingargs: props.listingArgs });
+      if (props.getValues) {
+        save({ listingargs: props.getValues() });
+      }
     }
   };
   return (
@@ -87,7 +82,10 @@ export const NavControlls = withRouter((props: Props) => {
         <Button
           style={{ marginLeft: "auto" }}
           onClick={() =>
-            save(() => props.history.push("/become-a-host/" + listing?.id))
+            save({
+              callback: () =>
+                props.history.push("/become-a-host/" + listing?.id),
+            })
           }
           title={"Finish"}
         />

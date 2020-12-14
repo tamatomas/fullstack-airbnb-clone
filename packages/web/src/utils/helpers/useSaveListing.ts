@@ -1,3 +1,4 @@
+import { Listing } from "@airbnb/common";
 import { CREATE, UPDATE } from "@airbnb/controller";
 import { useMutation } from "@apollo/client";
 import { useListingStore } from "../store/listingstore";
@@ -7,10 +8,15 @@ export const useSaveListing = () => {
   const updateListing = useListingStore((state) => state.updateListing);
 
   const [saveListing] = useMutation(listing?.id ? UPDATE : CREATE);
-  const save = (callback?: () => void) => {
-    console.log("saving listing: ", listing);
+  const save = ({
+    callback,
+    listingargs,
+  }: {
+    callback?: () => void;
+    listingargs?: Partial<Listing>;
+  }) => {
     saveListing({
-      variables: { data: listing },
+      variables: { data: { ...listing, ...listingargs } },
     }).then((data) => {
       if (!listing?.id) {
         delete data.data?.createListing.__typename;
