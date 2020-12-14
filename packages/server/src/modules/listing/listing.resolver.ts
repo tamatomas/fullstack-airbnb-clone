@@ -22,14 +22,14 @@ export class ListingResolver {
     @Arg("state", { nullable: true }) state?: string,
     @Arg("nguests", { nullable: true }) nguests?: number
   ): Promise<Listing[]> {
-    const list = await DI.em.find(Listing, {
+    const lists = await DI.em.find(Listing, {
       city,
       country,
       state,
-      nguests,
     });
 
-    return list;
+    if (nguests) return lists.filter((list) => list.nguests >= nguests);
+    else return lists;
   }
 
   @Query(() => Listing)
