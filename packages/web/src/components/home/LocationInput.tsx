@@ -14,7 +14,6 @@ const useStyles = createUseStyles({
     width: 480,
     height: "auto",
     maxHeight: 500,
-    minHeight: 200,
     borderRadius: 30,
     top: 20,
     left: -20,

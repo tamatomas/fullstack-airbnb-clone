@@ -41,7 +41,8 @@ export const SearchResults = (props: Props) => {
     <div className={styles.listcontainer}>
       <p className={styles.subtitle}>{props.listings?.length} stays</p>
       <p className={styles.title}>
-        Stays in {props.listings && props.listings[0].city}
+        Stays in
+        {props.listings && props.listings?.length > 0 && props.listings[0].city}
       </p>
       {props.listings &&
         props.listings.map((listing) => (

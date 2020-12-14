@@ -23,9 +23,9 @@ export class ListingResolver {
     @Arg("nguests", { nullable: true }) nguests?: number
   ): Promise<Listing[]> {
     const lists = await DI.em.find(Listing, {
-      city,
-      country,
-      state,
+      city: city || undefined,
+      country: country || undefined,
+      state: state || undefined,
     });
 
     if (nguests) return lists.filter((list) => list.nguests >= nguests);
