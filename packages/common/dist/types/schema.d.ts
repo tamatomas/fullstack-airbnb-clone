@@ -20,9 +20,10 @@ export declare type Query = {
     data: User;
 };
 export declare type QuerySearchArgs = {
-    location: Scalars['JSONObject'];
-    guests: Scalars['Float'];
-    city: Scalars['String'];
+    nguests?: Maybe<Scalars['Float']>;
+    state?: Maybe<Scalars['String']>;
+    country?: Maybe<Scalars['String']>;
+    city?: Maybe<Scalars['String']>;
 };
 export declare type QueryFindArgs = {
     id: Scalars['Int'];
@@ -46,7 +47,8 @@ export declare type Listing = {
     city?: Maybe<Scalars['String']>;
     street?: Maybe<Scalars['String']>;
     zip?: Maybe<Scalars['String']>;
-    location: Scalars['JSONObject'];
+    location?: Maybe<Scalars['JSONObject']>;
+    finished: Scalars['Boolean'];
     owner: User;
 };
 export declare enum KindOfPlaceEnum {
@@ -70,7 +72,7 @@ export declare type User = {
     email: Scalars['String'];
     password: Scalars['String'];
     phone?: Maybe<Scalars['Float']>;
-    born: Scalars['JSONObject'];
+    born?: Maybe<Scalars['JSONObject']>;
     listings: Array<Listing>;
 };
 export declare type Mutation = {
@@ -80,6 +82,7 @@ export declare type Mutation = {
     deleteListing: Scalars['Boolean'];
     register: User;
     login: Scalars['String'];
+    logout: Scalars['Boolean'];
     forgotPassword: Scalars['Boolean'];
     confirmUser: Scalars['Boolean'];
     changePassword?: Maybe<User>;
@@ -129,7 +132,7 @@ export declare type ListingInput = {
     street?: Maybe<Scalars['String']>;
     zip?: Maybe<Scalars['String']>;
     location?: Maybe<Scalars['JSONObject']>;
-    ownerid: Scalars['Int'];
+    ownerid?: Maybe<Scalars['Int']>;
 };
 export declare type RegisterInput = {
     firstname: Scalars['String'];

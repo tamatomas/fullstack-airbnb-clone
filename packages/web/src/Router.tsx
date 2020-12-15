@@ -17,6 +17,7 @@ import { Search } from "./pages/search/search";
 import { ListingView } from "./pages/search/listing";
 import { ListingHeader } from "./components";
 import { PrivateRoute } from "../src/components/PrivateRoute";
+import { Duplicate } from "./pages/become-a-host/duplicate";
 
 export const Router = () => {
   return (
@@ -28,6 +29,9 @@ export const Router = () => {
         <PrivateRoute path={"/hosting"} exact>
           <Hosting />
         </PrivateRoute>
+        <Route path={"/become-a-host/duplicate"} exact>
+          <Duplicate />
+        </Route>
         <PrivateRoute path={"/become-a-host"}>
           <Route path={"/become-a-host/room"}>
             <ListingHeader routename={"room"} />
@@ -52,6 +56,7 @@ export const Router = () => {
           <Route path={"/become-a-host/:id"}>
             <ViewListing />
           </Route>
+
           <Route path={"/become-a-host"} exact>
             <BecomeAHost />
           </Route>

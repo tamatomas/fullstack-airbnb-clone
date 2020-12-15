@@ -7,7 +7,7 @@ import { Select } from "../../components/listings/Select";
 import { Button } from "../../components/Button";
 import { LocationAutoComplete } from "../../components/listings/LocationAutocomplete";
 import { useListingStore } from "../../utils/store/listingstore";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const useStyles = createUseStyles({
   view: {
@@ -49,14 +49,12 @@ export const BecomeAHost = (props: Props) => {
     (i) => `for ${i + 1} guests`
   );
   const updateListing = useListingStore((state) => state.updateListing);
-
   const handleContinue = () => {
     updateListing({
       nguests: guests,
       kind: Object(KindOfPlaceEnum)[placeType],
     });
   };
-
   return (
     <div className={styles.view}>
       <p className={styles.title}>

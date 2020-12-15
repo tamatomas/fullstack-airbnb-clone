@@ -22,9 +22,10 @@ export type Query = {
 
 
 export type QuerySearchArgs = {
-  location: Scalars['JSONObject'];
-  guests: Scalars['Float'];
-  city: Scalars['String'];
+  nguests?: Maybe<Scalars['Float']>;
+  state?: Maybe<Scalars['String']>;
+  country?: Maybe<Scalars['String']>;
+  city?: Maybe<Scalars['String']>;
 };
 
 
@@ -51,7 +52,8 @@ export type Listing = {
   city?: Maybe<Scalars['String']>;
   street?: Maybe<Scalars['String']>;
   zip?: Maybe<Scalars['String']>;
-  location: Scalars['JSONObject'];
+  location?: Maybe<Scalars['JSONObject']>;
+  finished: Scalars['Boolean'];
   owner: User;
 };
 
@@ -79,7 +81,7 @@ export type User = {
   email: Scalars['String'];
   password: Scalars['String'];
   phone?: Maybe<Scalars['Float']>;
-  born: Scalars['JSONObject'];
+  born?: Maybe<Scalars['JSONObject']>;
   listings: Array<Listing>;
 };
 
@@ -90,6 +92,7 @@ export type Mutation = {
   deleteListing: Scalars['Boolean'];
   register: User;
   login: Scalars['String'];
+  logout: Scalars['Boolean'];
   forgotPassword: Scalars['Boolean'];
   confirmUser: Scalars['Boolean'];
   changePassword?: Maybe<User>;
@@ -156,7 +159,7 @@ export type ListingInput = {
   street?: Maybe<Scalars['String']>;
   zip?: Maybe<Scalars['String']>;
   location?: Maybe<Scalars['JSONObject']>;
-  ownerid: Scalars['Int'];
+  ownerid?: Maybe<Scalars['Int']>;
 };
 
 export type RegisterInput = {

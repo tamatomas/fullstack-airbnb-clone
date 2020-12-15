@@ -11,6 +11,9 @@ exports.USER_DATA = client_1.gql `
       email
       phone
       born
+      listings {
+        id
+      }
     }
   }
 `;

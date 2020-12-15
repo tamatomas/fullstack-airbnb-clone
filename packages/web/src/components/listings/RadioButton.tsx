@@ -1,5 +1,5 @@
-import React from "react"
-import { createUseStyles } from "react-jss"
+import React from "react";
+import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
   container: {
@@ -11,9 +11,6 @@ const useStyles = createUseStyles({
     alignItems: "center",
   },
   radio: {
-    width: 22,
-    height: 22,
-    borderRadius: 22 / 2,
     backgroundColor: "white",
     border: "1px solid black",
     boxSizing: "border-box",
@@ -26,21 +23,33 @@ const useStyles = createUseStyles({
     fontFamily: "poppins",
     fontSize: 17,
   },
-})
+});
 interface Props {
-  selected: boolean
-  onChange(): void
-  label: string
+  selected: boolean;
+  onChange(): void;
+  label?: string;
+  contClassName?: string;
+  size?: number;
+  color?: string;
 }
 
 export const RadioButton = (props: Props) => {
-  const styles = useStyles()
+  const styles = useStyles();
   return (
-    <div className={styles.container} onClick={() => props.onChange()}>
+    <div
+      className={`${styles.container} ${props.contClassName}`}
+      onClick={() => props.onChange()}
+    >
       <div
         className={`${styles.radio} ${props.selected ? styles.selected : ""}`}
+        style={{
+          height: props.size || 22,
+          width: props.size || 22,
+          borderRadius: (props.size || 22) / 2,
+          borderColor: props.selected ? props.color || "black" : "",
+        }}
       ></div>
-      <p className={styles.label}>{props.label}</p>
+      {props.label && <p className={styles.label}>{props.label}</p>}
     </div>
-  )
-}
+  );
+};

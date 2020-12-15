@@ -9,6 +9,9 @@ export const USER_DATA = gql`
       email
       phone
       born
+      listings {
+        id
+      }
     }
   }
 `;

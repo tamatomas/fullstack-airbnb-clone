@@ -81,7 +81,11 @@ export const NavBar = (props: Props) => {
         ) : (
           <HeaderButton
             label={"Become a host"}
-            to={"/become-a-host"}
+            to={
+              data?.data?.listings?.length && data?.data?.listings?.length > 0
+                ? "/become-a-host/duplicate"
+                : "/become-a-host"
+            }
             color={fixed ? "black" : "white"}
           />
         )}
