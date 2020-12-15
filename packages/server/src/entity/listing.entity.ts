@@ -94,7 +94,7 @@ export class Listing {
 
   @Field(() => Boolean)
   finished(@Root() parent: Listing): boolean {
-    return !!Object.entries(parent).find(
+    return !Object.entries(parent).find(
       ([_, v]) => v === null || v === undefined
     );
   }
