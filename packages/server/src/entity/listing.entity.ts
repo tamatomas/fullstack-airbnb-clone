@@ -7,7 +7,7 @@ import {
   PrimaryKey,
   Property,
 } from "@mikro-orm/core";
-import { Field, ID, ObjectType, registerEnumType } from "type-graphql";
+import { Field, ID, ObjectType, registerEnumType, Root } from "type-graphql";
 import { GraphQLJSONObject } from "graphql-type-json";
 import { KindOfPlace, PropertyType } from "@airbnb/common";
 import { User } from "./user.entity";
@@ -91,6 +91,13 @@ export class Listing {
   @Field(() => GraphQLJSONObject, { nullable: true })
   @Property({ type: JsonType, nullable: true })
   location?: Coords;
+
+  @Field(() => Boolean)
+  finished(@Root() parent: Listing): boolean {
+    return !!Object.entries(parent).find(
+      ([_, v]) => v === null || v === undefined
+    );
+  }
 
   @Field(() => User)
   @ManyToOne()
