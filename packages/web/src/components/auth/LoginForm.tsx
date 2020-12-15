@@ -7,21 +7,20 @@ import { ILoginInputs, loginSchema } from "@airbnb/common";
 import { LOGIN } from "@airbnb/controller";
 import { useMutation } from "@apollo/client";
 import { useAuthStore } from "../../utils/store/authstore";
-import { Redirect } from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
-export const LoginForm = () => {
-  const [login, data] = useMutation<{ login: string }>(LOGIN);
+export const LoginForm = withRouter((props: RouteComponentProps) => {
+  const [login] = useMutation<{ login: string }>(LOGIN);
   const { control, handleSubmit, errors } = useForm<ILoginInputs>({
     resolver: yupResolver(loginSchema),
   });
-  const onSubmit = (data: ILoginInputs) => {
-    login({ variables: data });
-  };
   const setAuth = useAuthStore((state) => state.setAuth);
-  if (data.data?.login) {
-    setAuth(true);
-    return <Redirect to="/" />;
-  }
+  const onSubmit = (data: ILoginInputs) => {
+    login({ variables: data }).then(() => {
+      setAuth(true);
+      props.history.push("/");
+    });
+  };
   return (
     <React.Fragment>
       <Controller
@@ -60,4 +59,4 @@ export const LoginForm = () => {
       <ButtonWithGradient child={"Log in"} onClick={handleSubmit(onSubmit)} />
     </React.Fragment>
   );
-};
+});
