@@ -7,7 +7,7 @@ import { Select } from "../../components/listings/Select";
 import { Button } from "../../components/Button";
 import { LocationAutoComplete } from "../../components/listings/LocationAutocomplete";
 import { useListingStore } from "../../utils/store/listingstore";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = createUseStyles({
   view: {

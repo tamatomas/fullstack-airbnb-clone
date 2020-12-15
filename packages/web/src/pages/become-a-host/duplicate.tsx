@@ -107,7 +107,7 @@ export const Duplicate = withRouter((props: Props) => {
       }
     }
   };
-  if (!data?.data?.listings?.length && !loading && false) {
+  if (!data?.data?.listings?.length && !loading) {
     return <Redirect to="/become-a-host" />;
   }
   return (
