@@ -7,6 +7,7 @@ import { Button } from "../../components/Button";
 import { HostingHeader, ListingItemPopup } from "../../components";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { AiOutlineSetting } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const useStyles = createUseStyles({
   "@global": {
@@ -125,22 +126,24 @@ const ListingItem = (props: itemProps) => {
   return (
     <tr>
       <td>
-        <p className={styles.infotxt}>{props.title}</p>
+        <p className={styles.infotxt}>{props.title || "No title"}</p>
       </td>
       <td>
         {!props.finished && (
-          <Button
-            title={"Finish"}
-            style={{
-              margin: "0px auto",
-              fontWeight: 400,
-              backgroundColor: "white",
-              border: "1px solid #008489",
-              color: "#008489",
-              width: 70,
-              height: 32,
-            }}
-          />
+          <Link to={"/become-a-host/" + props.id}>
+            <Button
+              title={"Finish"}
+              style={{
+                margin: "0px auto",
+                fontWeight: 400,
+                backgroundColor: "white",
+                border: "1px solid #008489",
+                color: "#008489",
+                width: 70,
+                height: 32,
+              }}
+            />
+          </Link>
         )}
       </td>
       <td style={{ textAlign: "center" }}>
@@ -156,7 +159,11 @@ const ListingItem = (props: itemProps) => {
         <div className={styles.morebtn} onClick={() => setShow(true)}>
           <FiMoreHorizontal color={"#767676"} size={18} />
         </div>
-        <ListingItemPopup show={show} hide={() => setShow(false)} />
+        <ListingItemPopup
+          show={show}
+          hide={() => setShow(false)}
+          id={props.id}
+        />
       </td>
     </tr>
   );
