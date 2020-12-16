@@ -29,37 +29,34 @@ export const Router = () => {
         <PrivateRoute path={"/hosting"} exact>
           <Hosting />
         </PrivateRoute>
-        <Route path={"/become-a-host/duplicate"} exact>
+        <PrivateRoute path={"/become-a-host/duplicate"} exact>
           <Duplicate />
-        </Route>
-        <PrivateRoute path={"/become-a-host"}>
-          <Route path={"/become-a-host/room"}>
-            <ListingHeader routename={"room"} />
-            <Room />
-          </Route>
-          <Route path={"/become-a-host/bedrooms"}>
-            <ListingHeader routename={"bedrooms"} />
-            <Bedrooms />
-          </Route>
-          <Route path={"/become-a-host/description"}>
-            <ListingHeader routename={"description"} />
-            <Description />
-          </Route>
-          <Route path={"/become-a-host/location"}>
-            <ListingHeader routename={"location"} />
-            <Location />
-          </Route>
-          <Route path={"/become-a-host/amenities"}>
-            <ListingHeader routename={"amenities"} />
-            <Amenities />
-          </Route>
-          <Route path={"/become-a-host/:id"}>
-            <ViewListing />
-          </Route>
-
-          <Route path={"/become-a-host"} exact>
-            <BecomeAHost />
-          </Route>
+        </PrivateRoute>
+        <PrivateRoute path={"/become-a-host/room"}>
+          <ListingHeader routename={"room"} />
+          <Room />
+        </PrivateRoute>
+        <PrivateRoute path={"/become-a-host/bedrooms"}>
+          <ListingHeader routename={"bedrooms"} />
+          <Bedrooms />
+        </PrivateRoute>
+        <PrivateRoute path={"/become-a-host/description"}>
+          <ListingHeader routename={"description"} />
+          <Description />
+        </PrivateRoute>
+        <PrivateRoute path={"/become-a-host/location"}>
+          <ListingHeader routename={"location"} />
+          <Location />
+        </PrivateRoute>
+        <PrivateRoute path={"/become-a-host/amenities"}>
+          <ListingHeader routename={"amenities"} />
+          <Amenities />
+        </PrivateRoute>
+        <PrivateRoute path={"/become-a-host/:id"}>
+          <ViewListing />
+        </PrivateRoute>
+        <PrivateRoute path={"/become-a-host"} exact>
+          <BecomeAHost />
         </PrivateRoute>
         <Route path={"/confirmuser/:token"}>
           <ConfirmUser />
