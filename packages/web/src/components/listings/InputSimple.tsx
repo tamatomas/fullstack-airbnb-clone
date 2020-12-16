@@ -120,7 +120,13 @@ export const InputSimple = (props: Props) => {
         <div className={styles.inptcontainer}>
           <input
             {...props}
-            type={!props.type && pswd && props.pswd ? "password" : "text"}
+            type={
+              props.type
+                ? props.type
+                : props.pswd && pswd && props.pswd
+                ? "password"
+                : "text"
+            }
             className={styles.input}
             style={{ opacity: focused || props.value ? 1 : 0 }}
           />
