@@ -25,7 +25,6 @@ export const USER_LISTINGS = gql`
         title
         description
         price
-        currency
         kind
         proptype
         nguests

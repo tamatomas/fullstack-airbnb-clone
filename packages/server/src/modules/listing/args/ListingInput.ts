@@ -21,9 +21,6 @@ export class ListingInput implements Partial<Listing> {
   @Field({ nullable: true })
   price?: number;
 
-  @Field({ nullable: true })
-  currency?: string;
-
   @Field(() => KindOfPlace)
   kind!: KindOfPlace;
 

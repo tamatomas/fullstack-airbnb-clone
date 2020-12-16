@@ -26,7 +26,6 @@ exports.USER_LISTINGS = client_1.gql `
         title
         description
         price
-        currency
         kind
         proptype
         nguests

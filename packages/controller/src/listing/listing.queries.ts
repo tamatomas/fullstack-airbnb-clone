@@ -12,7 +12,6 @@ export const SEARCH = gql`
       title
       description
       price
-      currency
       kind
       proptype
       nguests
@@ -37,7 +36,6 @@ export const FIND = gql`
       title
       description
       price
-      currency
       kind
       proptype
       nguests

@@ -39,7 +39,6 @@ export type Listing = {
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Float']>;
-  currency?: Maybe<Scalars['String']>;
   kind: KindOfPlaceEnum;
   proptype?: Maybe<PropertyTypeEnum>;
   nguests: Scalars['Float'];
@@ -145,7 +144,6 @@ export type ListingInput = {
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Float']>;
-  currency?: Maybe<Scalars['String']>;
   kind: KindOfPlaceEnum;
   proptype?: Maybe<PropertyTypeEnum>;
   nguests: Scalars['Float'];

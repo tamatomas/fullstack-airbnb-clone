@@ -58,7 +58,6 @@ export class ListingResolver {
     list.amenities = data.amenities;
     list.city = data.city;
     list.country = data.country;
-    list.currency = data.currency;
     list.dedicated = data.dedicated;
     list.description = data.description;
     list.kind = data.kind;
@@ -99,7 +98,6 @@ export class ListingResolver {
     list.amenities = updateListingData.amenities;
     list.city = updateListingData.city;
     list.country = updateListingData.country;
-    list.currency = updateListingData.currency;
     list.dedicated = updateListingData.dedicated;
     list.description = updateListingData.description;
     list.kind = updateListingData.kind;

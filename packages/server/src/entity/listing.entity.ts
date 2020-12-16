@@ -36,10 +36,6 @@ export class Listing {
   @Property({ nullable: true })
   price?: number;
 
-  @Field({ nullable: true })
-  @Property({ nullable: true })
-  currency?: string;
-
   @Field(() => KindOfPlace)
   @Enum()
   kind!: KindOfPlace;

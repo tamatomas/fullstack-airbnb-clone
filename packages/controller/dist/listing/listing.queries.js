@@ -14,7 +14,6 @@ exports.SEARCH = client_1.gql `
       title
       description
       price
-      currency
       kind
       proptype
       nguests
@@ -38,7 +37,6 @@ exports.FIND = client_1.gql `
       title
       description
       price
-      currency
       kind
       proptype
       nguests
