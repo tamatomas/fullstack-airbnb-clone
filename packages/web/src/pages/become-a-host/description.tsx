@@ -79,6 +79,7 @@ export function Description(props: Props) {
                 error={!!errors.price}
                 errmsg={errors.price?.message}
                 value={value}
+                type={"number"}
                 onBlur={onBlur}
                 onChange={onChange}
               />
