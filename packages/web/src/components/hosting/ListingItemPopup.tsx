@@ -58,7 +58,7 @@ export const ListingItemPopup = (props: Props) => {
             Edit
           </Link>
           <Link
-            to={"/become-a-host/delete/" + props.id}
+            to={"/become-a-host/remove/" + props.id}
             className={styles.item}
             onClick={() => props.hide()}
           >

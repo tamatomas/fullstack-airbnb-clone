@@ -52,6 +52,9 @@ export const Router = () => {
           <ListingHeader routename={"amenities"} />
           <Amenities />
         </PrivateRoute>
+        <PrivateRoute path={"/become-a-host/remove/:id"}>
+          <Amenities />
+        </PrivateRoute>
         <PrivateRoute path={"/become-a-host/:id"}>
           <ViewListing />
         </PrivateRoute>
