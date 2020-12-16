@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react"
-import { createUseStyles } from "react-jss"
-import { useOutside } from "../../utils/helpers/useOutside"
-import { FiAlertCircle } from "react-icons/fi"
-const InputColor = { border: "#afafaf", label: "#717171" }
+import React, { useRef, useState } from "react";
+import { createUseStyles } from "react-jss";
+import { useOutside } from "../../utils/helpers/useOutside";
+import { FiAlertCircle } from "react-icons/fi";
+const InputColor = { border: "#afafaf", label: "#717171" };
 
 const useStyles = createUseStyles({
   container: {
@@ -77,27 +77,27 @@ const useStyles = createUseStyles({
     top: -30,
     color: "#484848",
   },
-})
+});
 
 interface Props
   extends React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  label?: string
-  error?: boolean
-  errmsg?: string
-  date?: boolean
-  pswd?: boolean
-  contStyle?: React.CSSProperties
+  label?: string;
+  error?: boolean;
+  errmsg?: string;
+  date?: boolean;
+  pswd?: boolean;
+  contStyle?: React.CSSProperties;
 }
 
 export const InputSimple = (props: Props) => {
-  const styles = useStyles()
-  const [focused, setFocused] = useState(false)
-  const [pswd, showPswd] = useState(true)
-  const inptRef = useRef(null)
-  useOutside(inptRef, () => setFocused(false))
+  const styles = useStyles();
+  const [focused, setFocused] = useState(false);
+  const [pswd, showPswd] = useState(true);
+  const inptRef = useRef(null);
+  useOutside(inptRef, () => setFocused(false));
   return (
     <React.Fragment>
       <div
@@ -120,9 +120,9 @@ export const InputSimple = (props: Props) => {
         <div className={styles.inptcontainer}>
           <input
             {...props}
+            type={!props.type && pswd && props.pswd ? "password" : "text"}
             className={styles.input}
             style={{ opacity: focused || props.value ? 1 : 0 }}
-            type={pswd && props.pswd ? "password" : "text"}
           />
           {props.pswd && (
             <p className={styles.passwordHide} onClick={() => showPswd(!pswd)}>
@@ -138,5 +138,5 @@ export const InputSimple = (props: Props) => {
         </div>
       )}
     </React.Fragment>
-  )
-}
+  );
+};
