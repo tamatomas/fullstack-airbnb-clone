@@ -94,7 +94,7 @@ export const Duplicate = withRouter((props: Props) => {
       props.history.push("/become-a-host");
     }
     if (selected !== "0") {
-      const { id, __typename, ...listing } = data?.data.listings.find(
+      const { id, ...listing } = data?.data.listings.find(
         (listing) => listing.id === selected
       )!;
       if (

@@ -19,11 +19,9 @@ export const useSaveListing = () => {
       variables: { data: { ...listing, ...listingargs } },
     }).then((data) => {
       if (!listing?.id) {
-        const { __typename, ...listing } = data.data?.createListing;
-        updateListing(listing);
+        updateListing(data.data?.createListing);
       } else {
-        const { __typename, ...listing } = data.data?.updateListing;
-        updateListing(listing);
+        updateListing(data.data?.updateListing);
       }
       if (callback) callback();
     });
