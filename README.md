@@ -1,22 +1,28 @@
-# Yarn-Workspace-Expo-CRA
-Simple Yarn Workspace setup with Expo React Native, React.js and Apollo Server.
+# Full stack Airbnb Clone
 
+[Demo](https://fullstack-counter.netlify.app/)
 
-##  Workspace:
-The package folder contains the web, app, server, and common folders. There you can find the Apollo server with TypeGraphQL and TypeORM configurated with an auth API that is in development to be used in further projects. Also, it contains app and web folders where you can find React.js and Expo React Native ready to start.
+Here is a project I did after the full-stack counter to showcase my skills but also to show how robust Apollo Server with React.js can be. The project is a clone of the Airbnb platform which consists of a server and a web page, I also have plans to make an app but because I'm doing it besides my full-time job I don't have enough time. 
+The idea was to copy the logic and make a web that "works" but didn't have to look pretty so that it takes me 1-2 weeks but then viewing their design and the interactions I realized that It could be great if I tried to copy most of the design and animations, finally took me an extra week and the result is something I'm happy.
 
+- Custom inputs:
+![Inputs view](https://media.giphy.com/media/9GHe7D6bwZedwm12RH/giphy.gif)
+- Form validation:
+![Input validation view](https://media.giphy.com/media/3UIA3980CZw9W60yhR/giphy.gif)
 
-## Installation:
-You can follow this guide in how to set up a yarn workspace: [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/)
+Tech stack:
 
-Create react app and express guide: [Monorepo](https://www.smashingmagazine.com/2019/07/yarn-workspaces-organize-project-codebase-pro/)
+  - Apollo server / exrpess
+  - TypeGraphQL
+  - Mikro ORM / PostgreSQL
+  - React Hook Form and yup
+  - Google Maps API
+  - React jss (css-in-js)
+  - Zustand (state managment) 
+  - Yarn Workspaces
 
-To add expo you have to follow these steps: [dev.to](https://dev.to/expolovers/how-to-insert-an-expo-project-in-a-monorepo-5ab0)
+# Features
 
-If you are using Windows you will have to use [Windows Linux Subsystem](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) extension from Visual Studio Code extensions because the [expo-yarn-workspaces](https://github.com/expo/expo/tree/master/packages/expo-yarn-workspaces) package is only working on macOS and Linux.
-
-
-##  Usage:
-1. Clone the repo.
-2. Execute yarn install
-3. Run start-expo or start-web to start the clients.
+  - View, add, edit and delete listings. 
+  - Search and explore listings.
+  - Register and login into your account.
