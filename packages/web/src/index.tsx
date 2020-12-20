@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker-cssmodules.min.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "./utils/apollo/client";
+require("dotenv").config();
 
 ReactDOM.render(
   <React.StrictMode>

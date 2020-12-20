@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { User } from "@airbnb/common";
+import { Listing, User } from "@airbnb/common";
 import { USER_DATA } from "@airbnb/controller";
 import { useQuery } from "@apollo/client";
 import {
@@ -15,6 +15,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
 import { CountryDropdown } from "react-country-region-selector";
 import { createUseStyles } from "react-jss";
+import { useLatLng } from "../../utils/helpers/useLatLng";
 
 const useStyles = createUseStyles({
   select: {
@@ -58,6 +59,13 @@ export function Location(props: Props) {
     if (listing?.zip) setValue("zip", listing?.zip);
   }, [listing, setValue]);
 
+  const useValuesWithCoords = () => {
+    let list: Partial<Listing> = getValues();
+    useLatLng(list.street!).then(({ lat, lng }) => {
+      list.location = { lat: lat, lon: lng };
+    });
+    return list;
+  };
   return (
     <React.Fragment>
       <Layout formstyle={{ paddingBottom: 100 }}>
@@ -162,7 +170,7 @@ export function Location(props: Props) {
         <NavControlls
           continueLink={"/become-a-host/amenities"}
           backLink={"/become-a-host/bedrooms"}
-          getValues={getValues}
+          getValues={useValuesWithCoords}
         />
       </Layout>
     </React.Fragment>

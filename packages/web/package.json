@@ -12,12 +12,14 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "dotenv": "^8.2.0",
     "fontsource-poppins": "^3.0.10",
     "google-map-react": "^2.1.9",
     "react": "^17.0.1",
     "react-country-region-selector": "^3.0.1",
     "react-datepicker": "^3.3.0",
     "react-dom": "^17.0.1",
+    "react-geocode": "^0.2.2",
     "react-hook-form": "^6.12.2",
     "react-icons": "^4.1.0",
     "react-jss": "^10.5.0",
@@ -31,6 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:dev": "react-scripts start",
     "build": "react-scripts build && echo '/* /index.html 200' | cat >build/_redirects ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -56,6 +59,7 @@
   "devDependencies": {
     "@types/google-map-react": "^2.1.0",
     "@types/react-datepicker": "^3.1.2",
+    "@types/react-geocode": "^0.2.0",
     "@types/react-places-autocomplete": "^7.2.6",
     "@types/react-router-dom": "^5.1.6",
     "prettier": "^2.2.1"

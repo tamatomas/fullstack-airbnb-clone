@@ -18,6 +18,7 @@ import { ListingView } from "./pages/search/listing";
 import { ListingHeader } from "./components";
 import { PrivateRoute } from "../src/components/PrivateRoute";
 import { Duplicate } from "./pages/become-a-host/duplicate";
+import { Remove } from "./pages/become-a-host/remove";
 
 export const Router = () => {
   return (
@@ -53,7 +54,7 @@ export const Router = () => {
           <Amenities />
         </PrivateRoute>
         <PrivateRoute path={"/become-a-host/remove/:id"}>
-          <Amenities />
+          <Remove />
         </PrivateRoute>
         <PrivateRoute path={"/become-a-host/:id"}>
           <ViewListing />

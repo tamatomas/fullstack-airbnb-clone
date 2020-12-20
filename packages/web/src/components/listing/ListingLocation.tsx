@@ -20,7 +20,7 @@ export const ListingLocation = (props: Props) => {
   return (
     <div className={styles.mapcontainer}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyApADs6lsYxImhYSXsc9yR5CS9xQbsUXUM" }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY! }}
         defaultCenter={{ lat: props.location.lat, lng: props.location.lon }}
         defaultZoom={zoom}
       >
