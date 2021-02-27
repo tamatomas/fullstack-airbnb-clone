@@ -38,7 +38,7 @@ export const HostingHeader = (props: Props) => {
       <Link to="/hosting/listings" className={styles.btn}>
         Listings
       </Link>
-
+ 
       <Button
         title={"Create new listing"}
         style={{

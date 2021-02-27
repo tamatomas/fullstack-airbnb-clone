@@ -84,7 +84,7 @@ export const Listings = (props: Props) => {
       <HostingHeader />
       <div className={styles.container}>
         <div className={styles.topinfo}>
-          <p className={styles.toplabel}>{"2 Listings"}</p>
+          <p className={styles.toplabel}>{data?.data.listings.length + " Listings"}</p>
         </div>
         <table className={styles.table} cellSpacing={0}>
           <tr>

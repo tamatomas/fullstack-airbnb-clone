@@ -8,6 +8,7 @@ interface Props extends RouteProps {
 
 export const PrivateRoute = (props: Props) => {
   const isAuth = useAuthStore((state) => state.isAuth);
+  console.log(isAuth);
   if (isAuth) {
     return <Route {...props}>{props.children}</Route>;
   } else {

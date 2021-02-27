@@ -18,7 +18,7 @@ export const LoginForm = withRouter((props: RouteComponentProps) => {
   const onSubmit = (data: ILoginInputs) => {
     login({ variables: data }).then(() => {
       setAuth(true);
-      props.history.push("/");
+      props.history.go(0);
     });
   };
   return (
