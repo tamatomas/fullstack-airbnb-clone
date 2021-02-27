@@ -17,7 +17,7 @@ export const useSearchStore = create<State>(
     }),
     {
       name: "search-storage",
-      storage: localStorage,
+      getStorage: () => localStorage,
     }
   )
 );

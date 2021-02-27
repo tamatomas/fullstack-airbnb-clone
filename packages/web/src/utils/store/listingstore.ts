@@ -21,7 +21,7 @@ export const useListingStore = create<State>(
     }),
     {
       name: "listing-storage", // unique name
-      storage: localStorage,
+      getStorage: () => localStorage,
     }
   )
 );

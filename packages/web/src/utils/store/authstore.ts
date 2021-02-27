@@ -1,5 +1,5 @@
 import create from "zustand";
-import { persist } from "zustand/middleware";
+import { devtools, persist } from "zustand/middleware";
 
 export type State = {
   isAuth: boolean;
@@ -8,16 +8,15 @@ export type State = {
   setLoading: (loading: boolean) => void;
 };
 export const useAuthStore = create<State>(
-  persist(
-    (set) => ({
-      isAuth: false,
-      setAuth: (isAuth: boolean) => set({ isAuth }),
-      loading: false,
-      setLoading: (loading: boolean) => set({ loading }),
-    }),
-    {
-      name: "globals-storage", // unique name
-      storage: localStorage,
-    }
+  devtools(
+    persist(
+      (set) => ({
+        isAuth: false,
+        setAuth: (isAuth: boolean) => set({ isAuth }),
+        loading: false,
+        setLoading: (loading: boolean) => set({ loading }),
+      }),
+      { name: "globals-storage", getStorage: () => localStorage }
+    )
   )
 );
