@@ -38,15 +38,19 @@ export const HostingHeader = (props: Props) => {
       <Link to="/hosting/listings" className={styles.btn}>
         Listings
       </Link>
- 
-      <Button
-        title={"Create new listing"}
-        style={{
-          marginLeft: "auto",
-          fontWeight: 400,
-          width: 180,
-        }}
-      />
+      <Link
+        to="/become-a-host"
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        <Button
+          title={"Create new listing"}
+          style={{
+            marginLeft: "auto",
+            fontWeight: 400,
+            width: 180,
+          }}
+        />
+      </Link>
     </Header>
   );
 };

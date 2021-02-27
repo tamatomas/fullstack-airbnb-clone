@@ -11,12 +11,16 @@ export const useAuthStore = create<State>(
   devtools(
     persist(
       (set) => ({
-        isAuth: false,
+        isAuth: true,
         setAuth: (isAuth: boolean) => set({ isAuth }),
         loading: false,
         setLoading: (loading: boolean) => set({ loading }),
       }),
-      { name: "globals-storage", getStorage: () => localStorage }
+      {
+        name: "globals-storage",
+        getStorage: () => localStorage,
+        
+      }
     )
   )
 );
